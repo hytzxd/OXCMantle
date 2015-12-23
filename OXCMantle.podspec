@@ -3,15 +3,10 @@
 Pod::Spec.new do |s|
 
   s.name         = "OXCMantle"
-  s.version      = "1.0.0"
-  s.summary      = "在Mantle的基础上夹生了类型验证"
+  s.version      = "1.0.1"
+  s.summary      = "在Mantle的基础上夹生了类型验证，修复了一些bug"
   s.description  = <<-DESC
-                   A longer description of OXCen in Markdown format.
-
-                   * Think: Why did you write this? What is the focus? What does it do?
-                   * CocoaPods will be using this to generate tags, and improve search results.
-                   * Try to keep it short, snappy and to the point.
-                   * Finally, don't worry about the indent, CocoaPods strips it!
+                   修复了64位NSInteger不能正常转换的问题
                    DESC
 
   s.homepage     = "https://github.com/hytzxd/OXCMantle"

@@ -33,7 +33,6 @@ typedef NS_ENUM(NSUInteger, OXPropertyType){
     OXPropertyTypeUnsignedLong,
 };
 
-
 @interface OXModel ()
 
 @property (nonatomic, readwrite, strong) NSString *dictionaryKey;

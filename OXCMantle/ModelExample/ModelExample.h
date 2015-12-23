@@ -10,6 +10,7 @@
 
 @interface ModelExample : OXModel
 @property (copy ,nonatomic)NSString *ID;
+@property (assign ,nonatomic)NSInteger age;
 @property (strong ,nonatomic)NSArray *names;
 @property (strong ,nonatomic)NSArray *examples;
 @property (strong ,nonatomic)NSDate *date;

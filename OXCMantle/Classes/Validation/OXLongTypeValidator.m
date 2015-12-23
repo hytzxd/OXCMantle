@@ -18,6 +18,8 @@
             *isValid = YES;
             if ([value respondsToSelector:@selector(longValue)]){
                 return @([value longValue]);
+            }else if([value respondsToSelector:@selector(longLongValue)]){
+                return @([value longLongValue]);
             }
             return @0;
         };
