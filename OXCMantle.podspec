@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "OXCMantle"
-  s.version      = "1.0.1"
+  s.version      = "1.0.4"
   s.summary      = "在Mantle的基础上夹生了类型验证，修复了一些bug"
   s.description  = <<-DESC
                    修复了64位NSInteger不能正常转换的问题
