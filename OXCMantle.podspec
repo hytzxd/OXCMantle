@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/hytzxd/OXCMantle.git", :branch => "master", :tag => '1.0.1' }
   s.requires_arc = true
   s.source_files  =  'OXCMantle/Classes/**/*.{h,m}'
-  s.dependency 'Mantle', '~> 2.0'
+  s.dependency 'Mantle', '<=2.0.6'
  
 
   
