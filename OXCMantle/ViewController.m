@@ -18,7 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    NSDictionary *dict = @{@"id":@(999),
+    NSDictionary *dict = @{@"id":@"999",
                            @"date":@(460457629.178584),
                            @"age":@"421431",
                            @"names":@[@"xd",@"xd",@"xd"],
