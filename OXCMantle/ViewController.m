@@ -18,7 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    NSDictionary *dict = @{@"id":@(999),
+    NSDictionary *dict = @{@"id":@(9999),
                            @"date":@(460457629.178584),
                            @"age":@"421431",
                            @"names":@[@"xd",@"xd",@"xd"],
@@ -34,6 +34,8 @@
                                      @"names":@[@"xd",@"xd",@"xd"]},
                                    
                                    ]};
+    
+//    dict = @{@"id":@(999)};
     NSError *error = nil;
     ModelExample *example =  [MTLJSONAdapter modelOfClass:[ModelExample class] fromJSONDictionary:dict error:&error];
     NSLog(@"%@ %@",example,error);

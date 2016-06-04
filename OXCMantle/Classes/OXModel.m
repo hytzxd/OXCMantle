@@ -12,6 +12,18 @@
 #import "NSString+ValidationUtils.h"
 #import "OXValidationFunctions.h"
 #import "NSValueTransformer+MTLPredefinedTransformerAdditions.h"
+#import "OXEXTRuntimeExtensions.h"
+typedef void (^ox_mtl_cleanupBlock_t)();
+
+void ox_mtl_executeCleanupBlock (__strong ox_mtl_cleanupBlock_t *block);
+void ox_mtl_executeCleanupBlock (__strong ox_mtl_cleanupBlock_t *block) {
+    (*block)();
+}
+#define ox_metamacro_concat(A,B) \
+    A##B
+#define ox_onExit \
+try {} @finally {} \
+__strong ox_mtl_cleanupBlock_t ox_metamacro_concat(mtl_exitBlock_, __LINE__) __attribute__((cleanup(ox_mtl_executeCleanupBlock), unused)) = ^
 
 static const void *OXObjectiveTypsKeys = &OXObjectiveTypsKeys;
 
@@ -35,7 +47,7 @@ typedef NS_ENUM(NSUInteger, OXPropertyType){
 
 @interface OXModel ()
 
-@property (nonatomic, readwrite, strong) NSString *dictionaryKey;
+@property (nonatomic, readwrite, strong) NSString *__ox_dictionaryKey;
 @end
 
 
@@ -87,44 +99,25 @@ static NSArray *propertyTypesArray;
     if (!class || class == [NSObject class]){
         return;
     }
-	
-    unsigned int outCount, i;
-    objc_property_t *properties = class_copyPropertyList(class, &outCount);
-    for (i = 0; i < outCount; i++){
-        objc_property_t p = properties[i];
-        const char *name = property_getName(p);
-        NSString *nsName = [[NSString alloc] initWithCString:name encoding:NSUTF8StringEncoding];
-        NSString *lowerCaseName = [nsName lowercaseString];
-        [translateDictionary setObject:nsName forKey:lowerCaseName];
-        NSString *propertyType = [self getPropertyType:p];
-        [self addValidatorForProperty:nsName type:propertyType];
+    for (NSString * propertyKey in  [self propertyKeys]) {
+        
+        [self addValidatorForProperty:propertyKey type:[self __ox_getPropertyTypeWithPropertyName:propertyKey]];
     }
-    free(properties);
-    
-    [self hydrateModelProperties:class_getSuperclass(class) translateDictionary:translateDictionary];
 }
 
-+ (NSString *)getPropertyType:(objc_property_t)property {
-    if (!property) {
-        return nil;
-    }
-    const char *attributes = property_getAttributes(property);
-    char buffer[1 + strlen(attributes)];
-    strcpy(buffer, attributes);
-    char *state = buffer, *attribute;
-    NSData *propertyType = nil;
-    while ((attribute = strsep(&state, ",")) != NULL){
-        if (attribute[0] == 'T' && attribute[1] != '@') {
-            propertyType = [NSData dataWithBytes:(attribute + 1) length:strlen(attribute) - 1];
-        } else if (attribute[0] == 'T' && attribute[1] == '@' && strlen(attribute) == 2) {
-            propertyType = [NSData dataWithBytes:"id" length:2];
-        } else if (attribute[0] == 'T' && attribute[1] == '@') {
-            propertyType = [NSData dataWithBytes:(attribute + 3) length:strlen(attribute) - 4];
-        }
-    }
-	
-    return [[NSString alloc] initWithData:propertyType encoding:NSUTF8StringEncoding];
++ (NSString *)__ox_getPropertyTypeWithPropertyName:(NSString *)propertyName{
+    objc_property_t property = class_getProperty(self.class, propertyName.UTF8String);
+    
+    if (property == NULL) return nil;
+    
+    OX_mtl_propertyAttributes *attributes = mtl_copyPropertyAttributes(property);
+    @ox_onExit {
+        free(attributes);
+    };
+    return NSStringFromClass(attributes->objectClass);
+    
 }
+
 
 + (void)addValidatorForProperty:(NSString *)propertyName type:(NSString *)propertyType {
     IMP implementation;
@@ -191,35 +184,91 @@ static NSArray *propertyTypesArray;
     return [NSString stringWithFormat:@"validate%@:error:", [NSString capitalizeFirstCharacter:key]];
 }
 
-- (NSString *)dictionaryKey {
+- (NSString *)__ox_dictionaryKey {
     dispatch_once(&keyToken, ^{
-        _dictionaryKey = [[self class] calculateClassName];
+        ___ox_dictionaryKey = [[self class] calculateClassName];
     });
-    return _dictionaryKey;
+    return ___ox_dictionaryKey;
 }
 
-+ (NSMutableDictionary*)objectivePropertyTypes:(Class)class{
-	NSMutableDictionary *objectiveTypes = objc_getAssociatedObject(class, OXObjectiveTypsKeys);
-    if (!objectiveTypes) {
-        Class supperClass = class_getSuperclass(class);
-        if (supperClass) {
-            objectiveTypes = [self objectivePropertyTypes:supperClass];
-            if (objectiveTypes) objectiveTypes = [objectiveTypes mutableCopy];
+
+
+
+
+- (NSString *)compactDescription{
+    NSDictionary *jsonDict = [MTLJSONAdapter JSONDictionaryFromModel:self error:nil];
+    NSError *err;
+    return [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:jsonDict options:0 error:&err]
+                                 encoding:NSUTF8StringEncoding];
+}
+
+- (NSString*)description
+{
+    NSDictionary *jsonDict = [MTLJSONAdapter JSONDictionaryFromModel:self error:nil];
+    return [NSString stringWithFormat:@"%@", jsonDict];
+}
+
+
+
+#pragma mark - MTLJSONSerializing
++ (NSDictionary *)JSONKeyPathsByPropertyKey{
+    NSMutableDictionary *keys = [[NSMutableDictionary alloc]initWithCapacity:[[self propertyKeys]count]];
+    for (NSString *propertyKey in  [self propertyKeys]) {
+        if ([propertyKey isEqualToString:@"__ox_dictionaryKey"]) {
+            continue;
         }
-        objectiveTypes = objectiveTypes ?: [NSMutableDictionary dictionary];
-        objc_setAssociatedObject(class, OXObjectiveTypsKeys, objectiveTypes, OBJC_ASSOCIATION_RETAIN);
-        unsigned int outCount, i;
-        objc_property_t *properties = class_copyPropertyList(class, &outCount);
-        for (i = 0; i < outCount; i++){
-            objc_property_t p = properties[i];
-            NSString* propertyType = [self getPropertyType:p];
-            NSUInteger n = [propertyTypesArray indexOfObject:propertyType];
-            if (n == NSNotFound){
-                objectiveTypes[@(property_getName(p))] = propertyType;
-            }
-        }
+        keys[propertyKey] = propertyKey;
     }
-    return objectiveTypes;
+    return keys ;
+}
+
++ (NSValueTransformer*)JSONTransformerForKey:(NSString*)key{
+    NSString* propertyType = [self __ox_getPropertyTypeWithPropertyName:key];
+    OXPropertyType type;
+    
+    NSUInteger n = [propertyTypesArray indexOfObject:propertyType];
+    
+    if (n == NSNotFound){
+        type = OXPropertyUnknown;
+    } else {
+        type = (OXPropertyType)n;
+    }
+    
+    if (OXPropertyUnknown == type ||OXPropertyTypeArray == type ||  OXPropertyTypeDictionary == type) {
+        return nil;
+    }
+    return [NSValueTransformer ox_mtl_basicClassyTransformerWithBasicClass:NSClassFromString(propertyType)];
+    
+
+       
+}
+
+/* 获取对象的所有属性和属性内容 */
+- (NSDictionary *)getAllPropertiesAndVaules
+{
+    u_int count;
+    objc_property_t *properties;
+    NSMutableDictionary *props = [NSMutableDictionary dictionary];
+    //从当前类到所有父类的属性对象全部遍历
+    for (Class temp = [self class]; [temp isSubclassOfClass:[OXModel class]]; temp = [temp superclass]) {
+        //        DLOG(@"%@", temp);
+        
+        properties = class_copyPropertyList(temp, &count);
+        for (int i = 0; i < count; i++)
+        {
+            objc_property_t property = properties[i];
+            const char *char_f = property_getName(property);
+            NSString *propertyName = [NSString stringWithUTF8String:char_f];
+            id propertyValue = [self valueForKey:(NSString *)propertyName];
+            if (propertyValue) {
+                [props setObject:propertyValue forKey:propertyName];
+            }
+            //            DLOG(@"%@", propertyName);
+        }
+        free(properties);
+    }
+    
+    return props;
 }
 
 
@@ -258,87 +307,51 @@ static NSArray *propertyTypesArray;
     return name;
 }
 
-- (NSString *)compactDescription{
-    NSDictionary *jsonDict = [MTLJSONAdapter JSONDictionaryFromModel:self error:nil];
-    NSError *err;
-    return [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:jsonDict options:0 error:&err]
-                                 encoding:NSUTF8StringEncoding];
-}
-
-- (NSString*)description
-{
-    NSDictionary *jsonDict = [MTLJSONAdapter JSONDictionaryFromModel:self error:nil];
-    return [NSString stringWithFormat:@"%@", jsonDict];
-}
-
-/* 获取对象的所有属性和属性内容 */
-- (NSDictionary *)getAllPropertiesAndVaules
-{
-    u_int count;
-    objc_property_t *properties;
-    NSMutableDictionary *props = [NSMutableDictionary dictionary];
-    //从当前类到所有父类的属性对象全部遍历
-    for (Class temp = [self class]; [temp isSubclassOfClass:[OXModel class]]; temp = [temp superclass]) {
-        //        DLOG(@"%@", temp);
-        
-        properties = class_copyPropertyList(temp, &count);
-        for (int i = 0; i < count; i++)
-        {
-            objc_property_t property = properties[i];
-            const char *char_f = property_getName(property);
-            NSString *propertyName = [NSString stringWithUTF8String:char_f];
-            id propertyValue = [self valueForKey:(NSString *)propertyName];
-            if (propertyValue) {
-                [props setObject:propertyValue forKey:propertyName];
++ (NSMutableDictionary*)objectivePropertyTypes:(Class)class{
+    NSMutableDictionary *objectiveTypes = objc_getAssociatedObject(class, OXObjectiveTypsKeys);
+    if (!objectiveTypes) {
+        Class supperClass = class_getSuperclass(class);
+        if (supperClass) {
+            objectiveTypes = [self objectivePropertyTypes:supperClass];
+            if (objectiveTypes) objectiveTypes = [objectiveTypes mutableCopy];
+        }
+        objectiveTypes = objectiveTypes ?: [NSMutableDictionary dictionary];
+        objc_setAssociatedObject(class, OXObjectiveTypsKeys, objectiveTypes, OBJC_ASSOCIATION_RETAIN);
+        unsigned int outCount, i;
+        objc_property_t *properties = class_copyPropertyList(class, &outCount);
+        for (i = 0; i < outCount; i++){
+            objc_property_t p = properties[i];
+            NSString* propertyType = [self getPropertyType:p];
+            NSUInteger n = [propertyTypesArray indexOfObject:propertyType];
+            if (n == NSNotFound){
+                objectiveTypes[@(property_getName(p))] = propertyType;
             }
-            //            DLOG(@"%@", propertyName);
         }
-        free(properties);
     }
-    
-    return props;
+    return objectiveTypes;
 }
 
-#pragma mark - MTLJSONSerializing
-+ (NSDictionary *)JSONKeyPathsByPropertyKey{
-    unsigned int outCount, i;
-    objc_property_t *properties = class_copyPropertyList(self, &outCount);
-    NSMutableDictionary* keys = [NSMutableDictionary dictionaryWithCapacity:outCount];
-    for (i = 0; i < outCount; i++){
-        objc_property_t p = properties[i];
-        const char *name = property_getName(p);
-        NSString *nsName = [[NSString alloc] initWithCString:name encoding:NSUTF8StringEncoding];
-        keys[nsName] = nsName;
++ (NSString *)getPropertyType:(objc_property_t)property {
+    if (!property) {
+        return nil;
     }
-    return keys;
+    const char *attributes = property_getAttributes(property);
+    char buffer[1 + strlen(attributes)];
+    strcpy(buffer, attributes);
+    char *state = buffer, *attribute;
+    NSData *propertyType = nil;
+    while ((attribute = strsep(&state, ",")) != NULL){
+        if (attribute[0] == 'T' && attribute[1] != '@') {
+            propertyType = [NSData dataWithBytes:(attribute + 1) length:strlen(attribute) - 1];
+        } else if (attribute[0] == 'T' && attribute[1] == '@' && strlen(attribute) == 2) {
+            propertyType = [NSData dataWithBytes:"id" length:2];
+        } else if (attribute[0] == 'T' && attribute[1] == '@') {
+            propertyType = [NSData dataWithBytes:(attribute + 3) length:strlen(attribute) - 4];
+        }
+    }
+    
+    return [[NSString alloc] initWithData:propertyType encoding:NSUTF8StringEncoding];
 }
 
-+ (NSValueTransformer*)JSONTransformerForKey:(NSString*)key{
-    NSString* type = [self objectivePropertyTypes:self][key];
-//    type = [type isEqualToString:@"id"] ? nil : type;
-    
-    return !type ? nil : [MTLJSONAdapter dictionaryTransformerWithModelClass:(NSClassFromString(type))];
-    
-    
-    /*objc_property_t p = class_getProperty([self class], key.UTF8String);
-    NSString *TypeName = [self getPropertyType:p];
-    Class subClass = NSClassFromString(TypeName);
-    if(subClass)
-    {
-        if([subClass isSubclassOfClass:[MTLModel class] ] && [subClass conformsToProtocol:@protocol(MTLJSONSerializing)])
-        {
-            return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:subClass];
-        }
-    }
-    else
-    {
-        NSString *protocolName = [self getArrayProtocolName:TypeName];
-        subClass  = NSClassFromString(protocolName);
-        if(subClass)
-        {
-            return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:subClass];
-        }
-    }
-    return nil;*/
-}
+
 @end

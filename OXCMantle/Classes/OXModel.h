@@ -11,7 +11,7 @@
 
 @interface OXModel : MTLModel<MTLJSONSerializing>
 
-@property (nonatomic, strong, readonly) NSString *dictionaryKey;
+@property (nonatomic, strong, readonly) NSString *__ox_dictionaryKey;
 
 + (NSString *)calculateClassName;
 

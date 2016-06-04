@@ -16,7 +16,7 @@
 }
 
 + (NSValueTransformer *)namesJSONTransformer{
-    return [NSValueTransformer mtl_JSONArrayTransformerWithBasicClass:[NSString class]];
+    return [NSValueTransformer ox_mtl_JSONArrayTransformerWithBasicClass:[NSString class]];
 }
 + (NSValueTransformer *)replysJSONTransformer{
     return [MTLJSONAdapter arrayTransformerWithModelClass:[ModelExample class]];

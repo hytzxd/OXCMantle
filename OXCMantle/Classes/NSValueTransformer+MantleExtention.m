@@ -18,7 +18,7 @@
 
 @implementation NSValueTransformer (MantleExtention)
 
-+ (NSValueTransformer *)mtl_JSONArrayTransformerWithBasicClass:(Class)basicClass{
++ (NSValueTransformer *)ox_mtl_JSONArrayTransformerWithBasicClass:(Class)basicClass{
 //#pragma clang diagnostic push
 //#pragma clang diagnostic ignored "-Wunused-variable"
    
@@ -71,5 +71,36 @@
  
 
 }
+
+
++ (NSValueTransformer *)ox_mtl_basicClassyTransformerWithBasicClass:(Class)basicClass{
+    return  [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError *__autoreleasing *error){
+        if (value == nil) return nil;
+        OXBaseValidator *validator = nil;
+        if ([basicClass isSubclassOfClass:NSString.class]) {
+            validator = [OXStringTypeValidator new];
+        } else if ([basicClass isSubclassOfClass:NSDate.class]){
+            validator = [OXDateTypeValidator new];
+        } else if ([basicClass isSubclassOfClass:NSNumber.class]){
+            validator = [OXNumberTypeValidator new];
+        }
+        NSError* err;
+        id model = value;
+        [validator validateValue:&model error:&err];
+        return model;
+    } reverseBlock:^id(id value, BOOL *success, NSError *__autoreleasing *error) {
+       
+        if (value == nil) return nil;
+        OXBaseValidator  *validator = [OXStringTypeValidator new];
+        id model = value;
+        [validator validateValue:&model error:nil];
+        return [model description];
+        
+    
+    }];
+    
+    
+}
+
 
 @end
