@@ -22,11 +22,6 @@
 
 
 + (NSValueTransformer *)ox_mtl_JSONArrayTransformerWithBasicClass:(Class)basicClass{
-//#pragma clang diagnostic push
-//#pragma clang diagnostic ignored "-Wunused-variable"
-   
-
-    
    return  [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError *__autoreleasing *error){
         NSArray *dictionaries = value;
         if (dictionaries == nil) return nil;
@@ -98,10 +93,7 @@
         id model = value;
         [validator validateValue:&model error:nil];
         return [model description];
-        
-    
     }];
-    
     
 }
 
