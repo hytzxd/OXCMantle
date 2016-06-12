@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		58C9A8342641F569B5A61790 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE53E901A3E9CA5A373715EF /* libPods.a */; };
 		9B23BA611D015516000E41F7 /* OXEXTRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B23BA601D015516000E41F7 /* OXEXTRuntimeExtensions.m */; };
+		9B3798261D0C0EE4002886BB /* OXValidatorReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3798251D0C0EE4002886BB /* OXValidatorReflection.m */; };
 		9BE8B6B41B72FB14006B8C10 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE8B6B31B72FB14006B8C10 /* main.m */; };
 		9BE8B6B71B72FB14006B8C10 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE8B6B61B72FB14006B8C10 /* AppDelegate.m */; };
 		9BE8B6BA1B72FB14006B8C10 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE8B6B91B72FB14006B8C10 /* ViewController.m */; };
@@ -49,8 +50,10 @@
 /* Begin PBXFileReference section */
 		3211663E6DFC37D77587B55B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		927F8CB6E046231D65E6CD1A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		9B23BA5F1D015516000E41F7 /* OXEXTRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OXEXTRuntimeExtensions.h; sourceTree = "<group>"; };
-		9B23BA601D015516000E41F7 /* OXEXTRuntimeExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OXEXTRuntimeExtensions.m; sourceTree = "<group>"; };
+		9B23BA5F1D015516000E41F7 /* OXEXTRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OXEXTRuntimeExtensions.h; path = ../OXEXTRuntimeExtensions.h; sourceTree = "<group>"; };
+		9B23BA601D015516000E41F7 /* OXEXTRuntimeExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OXEXTRuntimeExtensions.m; path = ../OXEXTRuntimeExtensions.m; sourceTree = "<group>"; };
+		9B3798241D0C0EE4002886BB /* OXValidatorReflection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OXValidatorReflection.h; sourceTree = "<group>"; };
+		9B3798251D0C0EE4002886BB /* OXValidatorReflection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OXValidatorReflection.m; sourceTree = "<group>"; };
 		9BE8B6AE1B72FB14006B8C10 /* OXCMantle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OXCMantle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BE8B6B21B72FB14006B8C10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9BE8B6B31B72FB14006B8C10 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -206,8 +209,6 @@
 		9BE8B7A91B7300E9006B8C10 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				9B23BA5F1D015516000E41F7 /* OXEXTRuntimeExtensions.h */,
-				9B23BA601D015516000E41F7 /* OXEXTRuntimeExtensions.m */,
 				9BE8B7AA1B7300E9006B8C10 /* NSValueTransformer+MantleExtention.h */,
 				9BE8B7AB1B7300E9006B8C10 /* NSValueTransformer+MantleExtention.m */,
 				9BE8B7AC1B7300E9006B8C10 /* OXModel.h */,
@@ -220,6 +221,8 @@
 		9BE8B7AE1B7300E9006B8C10 /* Validation */ = {
 			isa = PBXGroup;
 			children = (
+				9B23BA5F1D015516000E41F7 /* OXEXTRuntimeExtensions.h */,
+				9B23BA601D015516000E41F7 /* OXEXTRuntimeExtensions.m */,
 				9BE8B7AF1B7300E9006B8C10 /* NSString+ValidationUtils.h */,
 				9BE8B7B01B7300E9006B8C10 /* NSString+ValidationUtils.m */,
 				9BE8B7B11B7300E9006B8C10 /* OXArrayTypeValidator.h */,
@@ -251,6 +254,8 @@
 				9BE8B7CB1B7300E9006B8C10 /* OXUnsignedLongTypeValicdator.h */,
 				9BE8B7CC1B7300E9006B8C10 /* OXUnsignedLongTypeValicdator.m */,
 				9BE8B7CD1B7300E9006B8C10 /* OXValidationFunctions.h */,
+				9B3798241D0C0EE4002886BB /* OXValidatorReflection.h */,
+				9B3798251D0C0EE4002886BB /* OXValidatorReflection.m */,
 			);
 			path = Validation;
 			sourceTree = "<group>";
@@ -311,7 +316,7 @@
 		9BE8B6A61B72FB14006B8C10 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "张旭东";
 				TargetAttributes = {
 					9BE8B6AD1B72FB14006B8C10 = {
@@ -432,6 +437,7 @@
 				9BE8B7D11B7300E9006B8C10 /* NSValueTransformer+MantleExtention.m in Sources */,
 				9BE8B6B41B72FB14006B8C10 /* main.m in Sources */,
 				9BE8B7DC1B7300E9006B8C10 /* OXIntegerTypeValidator.m in Sources */,
+				9B3798261D0C0EE4002886BB /* OXValidatorReflection.m in Sources */,
 				9BE8B7E11B7300E9006B8C10 /* OXUnsignedLongTypeValicdator.m in Sources */,
 				9BE8B7DE1B7300E9006B8C10 /* OXNumberTypeValidator.m in Sources */,
 				9BE8B7E21B7300E9006B8C10 /* ModelExample.m in Sources */,
@@ -499,6 +505,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -565,6 +572,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = OXCMantle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "XD.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -576,6 +584,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = OXCMantle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "XD.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -594,6 +603,7 @@
 				);
 				INFOPLIST_FILE = OXCMantleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "XD.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OXCMantle.app/OXCMantle";
 			};
@@ -609,6 +619,7 @@
 				);
 				INFOPLIST_FILE = OXCMantleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "XD.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OXCMantle.app/OXCMantle";
 			};

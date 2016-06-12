@@ -8,18 +8,7 @@
 
 #import "Mantle.h"
 #import "NSValueTransformer+MantleExtention.h"
-
 @interface OXModel : MTLModel<MTLJSONSerializing>
 
-@property (nonatomic, strong, readonly) NSString *__ox_dictionaryKey;
 
-+ (NSString *)calculateClassName;
-
-- (NSString *)compactDescription;
-/**
- *  获取所有属性和数据
- *
- *  @return NSDictionary
- */
-- (NSDictionary *)getAllPropertiesAndVaules;
 @end

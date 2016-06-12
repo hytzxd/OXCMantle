@@ -7,7 +7,6 @@
 //
 
 #import "ModelExample.h"
-
 @implementation ModelExample
 + (NSDictionary *)JSONKeyPathsByPropertyKey{
     NSMutableDictionary* keys = [NSMutableDictionary dictionaryWithDictionary:[super JSONKeyPathsByPropertyKey]];
