@@ -34,9 +34,11 @@
                                      @"names":@[@"xd",@"xd",@"xd"]},
                                    
                                    ]};
+    
+//    dict = @{@"id":@(999)};
     NSError *error = nil;
     ModelExample *example =  [MTLJSONAdapter modelOfClass:[ModelExample class] fromJSONDictionary:dict error:&error];
-    NSLog(@"%@",example);
+    NSLog(@"%@ %@",example,error);
 }
 
 - (void)didReceiveMemoryWarning {

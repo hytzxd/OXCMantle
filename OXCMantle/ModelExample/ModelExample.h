@@ -7,11 +7,13 @@
 //
 
 #import "OXModel.h"
+#import "ProtocolExample.h"
+@interface ModelExample : OXModel<ProtocolExample>
 
-@interface ModelExample : OXModel
-@property (copy ,nonatomic)NSString *ID;
-@property (assign ,nonatomic)NSInteger age;
+@property (assign ,nonatomic)bool  ID;
+@property (copy ,nonatomic)NSString * age;
 @property (strong ,nonatomic)NSArray *names;
 @property (strong ,nonatomic)NSArray *examples;
 @property (strong ,nonatomic)NSDate *date;
+
 @end
