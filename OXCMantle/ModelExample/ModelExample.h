@@ -9,7 +9,8 @@
 #import "OXModel.h"
 #import "ProtocolExample.h"
 @interface ModelExample : OXModel<ProtocolExample>
-@property (assign ,nonatomic)NSInteger ID;
+
+@property (assign ,nonatomic)bool  ID;
 @property (copy ,nonatomic)NSString * age;
 @property (strong ,nonatomic)NSArray *names;
 @property (strong ,nonatomic)NSArray *examples;

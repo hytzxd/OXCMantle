@@ -15,7 +15,7 @@
 
 @implementation NSValueTransformer (MantleExtention)
 
-+ (NSValueTransformer *)oxc_mtl_JSONArrayTransformerWithBasicClass:(Class)clazz{
++ (NSValueTransformer *)oxc_mtl_JSONArrayTransformerWithBasicClass:(Class)basicClass{
    return  [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError *__autoreleasing *error){
         NSArray *dictionaries = value;
         if (dictionaries == nil) return nil;
@@ -29,7 +29,7 @@
                 continue;
             }
             if (value == nil) return nil;
-            OXPropertyType propertyType = [OXValidatorReflection oxc_propertyTypeForBasicClassStr:NSStringFromClass(clazz)];
+            OXPropertyType propertyType = [OXValidatorReflection oxc_propertyTypeForBasicClassStr:NSStringFromClass(basicClass)];
             NSAssert(OXPropertyUnknown != propertyType, @"只接受基本的数据类型 OXPropertyType 中包含的类型");
             if (OXPropertyUnknown == propertyType) {
                 continue;
@@ -81,5 +81,14 @@
     
 }
 
+
+@end
+
+
+@implementation NSValueTransformer (OXCDiscarded)
+
++ (NSValueTransformer *)mtl_JSONArrayTransformerWithBasicClass:(Class)basicClass{
+    return [self oxc_mtl_JSONArrayTransformerWithBasicClass:basicClass];
+}
 
 @end

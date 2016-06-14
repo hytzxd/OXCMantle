@@ -10,5 +10,4 @@
 #import "NSValueTransformer+MantleExtention.h"
 @interface OXModel : MTLModel<MTLJSONSerializing>
 
-
 @end
