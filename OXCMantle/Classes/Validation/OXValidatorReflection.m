@@ -10,36 +10,45 @@
 #import "OXEXTRuntimeExtensions.h"
 #import "OXValidationFunctions.h"
 #import "NSString+ValidationUtils.h"
+
 #import <objc/runtime.h>
 @implementation OXValidatorReflection
-+ (OXPropertyType)propertypeWithName:(NSString *)propertyName clazz:(Class)clazz{
++ (OXPropertyType)oxc_propertypeWithName:(NSString *)propertyName clazz:(Class)clazz{
     objc_property_t property = class_getProperty(clazz, propertyName.UTF8String);
     if (property == NULL){
         return OXPropertyUnknown;
     }
     OX_mtl_propertyAttributes *attributes = mtl_copyPropertyAttributes(property);
     NSString *classStr = NSStringFromClass(attributes->objectClass);
+    
+    if (0 == classStr.length) {
+       classStr = [NSString stringWithUTF8String:attributes->type];
+    }
     free(attributes);
-    NSNumber *typeVlaue = [[self oxpropertyTypeDict] objectForKey:classStr];
-    OXPropertyType type = [typeVlaue integerValue];
+    OXPropertyType type = [self oxc_propertyTypeForBasicClassStr:classStr];;
     return type;
 }
 
-+ (NSDictionary <NSString *, NSNumber *>  *)oxpropertyTypeDict{
++ (OXPropertyType)oxc_propertyTypeForBasicClassStr:(NSString *)clazzStr{
+    OXPropertyType typeVlaue = [[[self oxc_oxpropertyTypeDict] objectForKey:clazzStr] integerValue];
+    return typeVlaue;
+}
+
++ (NSDictionary <NSString *, NSNumber *>  *)oxc_oxpropertyTypeDict{
     static  NSDictionary <NSString *, NSNumber *> *propertyTypesDict = nil;
     if (0 == propertyTypesDict.allKeys.count) {
         propertyTypesDict = @{@"Unknown" : @(OXPropertyUnknown),
-                               @"NSString" : @(OXPropertyTypeString),
+                               NSStringFromClass([NSString class]) : @(OXPropertyTypeString),
                                [NSString stringWithFormat:@"%s",@encode(BOOL)] : @(OXPropertyTypeBool),
-                               @"NSNumber" : @(OXPropertyTypeNumber),
+                               NSStringFromClass([NSNumber class]): @(OXPropertyTypeNumber),
                                [NSString stringWithFormat:@"%s",@encode(int)] : @(OXPropertyTypeInteger),
                                [NSString stringWithFormat:@"%s",@encode(float)] : @(OXPropertyTypeFloat),
-                               @"NSArray" : @(OXPropertyTypeArray),
-                               @"NSMutableArray" : @(OXPropertyTypeMutableArray),
-                               @"NSDictionary" : @(OXPropertyTypeDictionary),
-                               @"NSMutableDictionary" : @(OXPropertyTypeMutableDictionary),
+                               NSStringFromClass([NSArray class]) : @(OXPropertyTypeArray),
+                               NSStringFromClass([NSMutableArray class]) : @(OXPropertyTypeMutableArray),
+                               NSStringFromClass([NSDictionary class]) : @(OXPropertyTypeDictionary),
+                               NSStringFromClass([NSMutableDictionary class]) : @(OXPropertyTypeMutableDictionary),
                                [NSString stringWithFormat:@"%s",@encode(unsigned int)] : @(OXPropertyTypeUnsignedInteger),
-                               @"NSDate" : @(OXPropertyTypeDate),
+                               NSStringFromClass([NSDate class]) : @(OXPropertyTypeDate),
                                [NSString stringWithFormat:@"%s",@encode(double)] : @(OXPropertyTypeDouble),
                                [NSString stringWithFormat:@"%s",@encode(long)] : @(OXPropertyTypeLong),
                                [NSString stringWithFormat:@"%s",@encode(unsigned long)] : @(OXPropertyTypeUnsignedLong),
@@ -50,7 +59,7 @@
 }
 
 
-+ (void)addValidatorForProperty:(NSString *)propertyName type:(OXPropertyType)propertyType clazz:(Class)clazz{
++ (void)oxc_addValidatorForProperty:(NSString *)propertyName type:(OXPropertyType)propertyType clazz:(Class)clazz{
     IMP implementation;
     switch (propertyType){
         case OXPropertyTypeString:
@@ -96,15 +105,59 @@
             break;
     }
     if (implementation){
-        NSString *methodName = [self generateValidationMethodName:propertyName];
+        NSString *methodName = [self oxc_generateValidationMethodName:propertyName];
         class_addMethod(clazz, NSSelectorFromString(methodName), implementation, "c@:^@^@");
     }
 }
 
-+(NSString *)generateValidationMethodName:(NSString *)key{
++(NSString *)oxc_generateValidationMethodName:(NSString *)key{
     return [NSString stringWithFormat:@"validate%@:error:", [NSString capitalizeFirstCharacter:key]];
 }
 
-
-
++ (OXBaseValidator *)oxc_validatorForPropertyType:(OXPropertyType)propertyType{
+    OXBaseValidator *validator = nil;
+    switch (propertyType){
+        case OXPropertyTypeString:
+            validator = [OXStringTypeValidator new];
+            break;
+        case OXPropertyTypeBool:
+            validator = [OXBooleanTypeValidator new];;
+            break;
+        case OXPropertyTypeNumber:
+            validator = [OXNumberTypeValidator new];
+            break;
+        case OXPropertyTypeInteger:
+            validator = [OXIntegerTypeValidator new];
+            break;
+        case OXPropertyTypeFloat:
+            validator = [OXFloatTypeValidator new];
+            break;
+        case OXPropertyTypeArray:
+        case OXPropertyTypeMutableArray:
+            validator = [OXArrayTypeValidator new];
+            break;
+        case OXPropertyTypeDictionary:
+        case OXPropertyTypeMutableDictionary:
+            validator = [OXDictionaryTypeValidator new];
+            break;
+        case OXPropertyTypeUnsignedInteger:
+            validator = [OXUnsignedIntegerTypeValidator new];
+            break;
+        case OXPropertyTypeDate:
+            validator =[OXDateTypeValidator new];
+            break;
+        case OXPropertyTypeDouble:
+            validator = [OXDoubleTypeValidator new];
+            break;
+        case OXPropertyTypeLong:
+            validator = [OXLongTypeValidator new];
+            break;
+        case OXPropertyTypeUnsignedLong:
+            validator = [OXUnsignedLongTypeValicdator new];
+            break;
+        default:
+            break;
+    }
+    return validator;
+}
 @end

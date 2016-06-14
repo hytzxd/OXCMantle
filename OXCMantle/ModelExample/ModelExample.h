@@ -9,8 +9,8 @@
 #import "OXModel.h"
 
 @interface ModelExample : OXModel
-@property (copy ,nonatomic)NSString *ID;
-@property (copy ,nonatomic)NSString *age;
+@property (assign ,nonatomic)NSInteger ID;
+@property (assign ,nonatomic)float age;
 @property (strong ,nonatomic)NSArray *names;
 @property (strong ,nonatomic)NSArray *examples;
 @property (strong ,nonatomic)NSDate *date;

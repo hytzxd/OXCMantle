@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "OXBaseValidator.h"
 typedef NS_ENUM(NSUInteger, OXPropertyType){
     OXPropertyUnknown = 0,
     OXPropertyTypeString,
@@ -28,5 +28,7 @@ typedef NS_ENUM(NSUInteger, OXPropertyType){
 
 
 @interface OXValidatorReflection : NSObject
-+ (OXPropertyType)propertypeWithName:(NSString *)propertyName clazz:(Class)clazz;
++ (OXPropertyType)oxc_propertypeWithName:(NSString *)propertyName clazz:(Class)clazz;
++ (OXBaseValidator *)oxc_validatorForPropertyType:(OXPropertyType)propertyType;
++ (OXPropertyType)oxc_propertyTypeForBasicClassStr:(NSString *)clazzStr;
 @end

@@ -11,17 +11,11 @@
 #import "MTLJSONAdapter.h"
 #import "MTLModel.h"
 #import "MTLValueTransformer.h"
-#import "OXDateTypeValidator.h"
 #import "OXStringTypeValidator.h"
-#import "OXNumberTypeValidator.h"
-
 
 @implementation NSValueTransformer (MantleExtention)
 
-
-
-
-+ (NSValueTransformer *)ox_mtl_JSONArrayTransformerWithBasicClass:(Class)basicClass{
++ (NSValueTransformer *)oxc_mtl_JSONArrayTransformerWithBasicClass:(Class)clazz{
    return  [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError *__autoreleasing *error){
         NSArray *dictionaries = value;
         if (dictionaries == nil) return nil;
@@ -34,14 +28,13 @@
                 [models addObject:NSNull.null];
                 continue;
             }
-            OXBaseValidator *validator = nil;
-            if ([basicClass isSubclassOfClass:NSString.class]) {
-                validator = [OXStringTypeValidator new];
-            } else if ([basicClass isSubclassOfClass:NSDate.class]){
-                validator = [OXDateTypeValidator new];
-            } else if ([basicClass isSubclassOfClass:NSNumber.class]){
-                validator = [OXNumberTypeValidator new];
+            if (value == nil) return nil;
+            OXPropertyType propertyType = [OXValidatorReflection oxc_propertyTypeForBasicClassStr:NSStringFromClass(clazz)];
+            NSAssert(OXPropertyUnknown != propertyType, @"只接受基本的数据类型 OXPropertyType 中包含的类型");
+            if (OXPropertyUnknown == propertyType) {
+                continue;
             }
+            OXBaseValidator *validator = [OXValidatorReflection oxc_validatorForPropertyType:propertyType];
             NSError* err;
             id model = JSONObject;
             [validator validateValue:&model error:&err];
@@ -66,22 +59,13 @@
         
         return dictionaries;
     }];
- 
-
 }
 
 
-+ (NSValueTransformer *)ox_mtl_basicClassyTransformerWithBasicClass:(Class)basicClass{
++ (NSValueTransformer *)oxc_mtl_basicClassyTransformerWithBasicType:(OXPropertyType)propertyType{
     return  [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError *__autoreleasing *error){
         if (value == nil) return nil;
-        OXBaseValidator *validator = nil;
-        if ([basicClass isSubclassOfClass:NSString.class]) {
-            validator = [OXStringTypeValidator new];
-        } else if ([basicClass isSubclassOfClass:NSDate.class]){
-            validator = [OXDateTypeValidator new];
-        } else if ([basicClass isSubclassOfClass:NSNumber.class]){
-            validator = [OXNumberTypeValidator new];
-        }
+        OXBaseValidator *validator = [OXValidatorReflection oxc_validatorForPropertyType:propertyType];
         NSError* err;
         id model = value;
         [validator validateValue:&model error:&err];

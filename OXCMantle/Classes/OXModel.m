@@ -21,11 +21,7 @@
 }
 
 + (NSValueTransformer*)JSONTransformerForKey:(NSString*)key{
-    
-    OXPropertyType propertyType = [OXValidatorReflection propertypeWithName:key clazz:self.class];
-    if (OXPropertyUnknown == propertyType ||OXPropertyTypeArray == propertyType ||  OXPropertyTypeDictionary == propertyType) {
-        return nil;
-    }
-    return [NSValueTransformer ox_mtl_basicClassyTransformerWithBasicClass:NSClassFromString(key)];
+    OXPropertyType propertyType = [OXValidatorReflection oxc_propertypeWithName:key clazz:self.class];
+    return [NSValueTransformer oxc_mtl_basicClassyTransformerWithBasicType:propertyType];
 }
 @end

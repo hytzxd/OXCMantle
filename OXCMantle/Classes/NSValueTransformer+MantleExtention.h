@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "OXValidatorReflection.h"
+
 //扩展加入了 系统自己的类
 @interface NSValueTransformer (MantleExtention)
-+ (NSValueTransformer *)ox_mtl_JSONArrayTransformerWithBasicClass:(Class)basicClass;
-+ (NSValueTransformer *)ox_mtl_basicClassyTransformerWithBasicClass:(Class)basicClass;
++ (NSValueTransformer *)oxc_mtl_JSONArrayTransformerWithBasicClass:(Class)clazz;
++ (NSValueTransformer *)oxc_mtl_basicClassyTransformerWithBasicType:(OXPropertyType)propertyType;
 @end
