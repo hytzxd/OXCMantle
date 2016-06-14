@@ -50,6 +50,7 @@
 /* Begin PBXFileReference section */
 		3211663E6DFC37D77587B55B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		927F8CB6E046231D65E6CD1A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		9B0344F21D10080300532921 /* ProtocolExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolExample.h; sourceTree = "<group>"; };
 		9B23BA5F1D015516000E41F7 /* OXEXTRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OXEXTRuntimeExtensions.h; path = ../OXEXTRuntimeExtensions.h; sourceTree = "<group>"; };
 		9B23BA601D015516000E41F7 /* OXEXTRuntimeExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OXEXTRuntimeExtensions.m; path = ../OXEXTRuntimeExtensions.m; sourceTree = "<group>"; };
 		9B3798241D0C0EE4002886BB /* OXValidatorReflection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OXValidatorReflection.h; sourceTree = "<group>"; };
@@ -265,6 +266,7 @@
 			children = (
 				9BE8B7CF1B7300E9006B8C10 /* ModelExample.h */,
 				9BE8B7D01B7300E9006B8C10 /* ModelExample.m */,
+				9B0344F21D10080300532921 /* ProtocolExample.h */,
 			);
 			path = ModelExample;
 			sourceTree = "<group>";

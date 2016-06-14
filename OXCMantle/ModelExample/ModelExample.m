@@ -20,4 +20,17 @@
 + (NSValueTransformer *)replysJSONTransformer{
     return [MTLJSONAdapter arrayTransformerWithModelClass:[ModelExample class]];
 }
+
+- (NSString *)test1{
+    return @"1";
+}
+- (NSString *)test2{
+    return @"1";
+}
+- (NSString *)test3{
+    return @"1";
+}
+- (NSString *)test4{
+    return @"1";
+}
 @end
