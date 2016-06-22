@@ -8,9 +8,6 @@
 
 
 #import "OXBaseModelValidator.h"
-#import "OXModel.h"
-
-
 @implementation OXBaseModelValidator
 
 - (id)initWithClass:(Class)baseModelClass {
@@ -37,7 +34,7 @@
 }
 
 - (id)init {
-    return [self initWithClass:[OXModel class]];
+    return [self initWithClass:[NSObject class]];
 }
 
 - (BOOL)validateValue:(id *)value error:(NSError **)error {

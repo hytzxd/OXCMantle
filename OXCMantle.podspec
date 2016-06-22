@@ -19,15 +19,15 @@ Pod::Spec.new do |s|
   s.source_files  =  'OXCMantle/Classes/*.{h}'
   s.dependency 'Mantle', '~> 2.0.7'
   s.frameworks = 'Foundation'
-   s.subspec 'OXCValidation' do |OXCValidation|
-      OXCValidation.source_files = 'OXCMantle/Classes/OXCValidation/**/*.{h,m}'
-      OXCValidation.public_header_files = 'OXCMantle/Classes/OXCValidation/**/*h'
+   s.subspec 'OXCValidation' do |ss|
+      ss.source_files = 'OXCMantle/Classes/OXCValidation/**/*.{h,m}'
+      ss.public_header_files = 'OXCMantle/Classes/OXCValidation/**/*.{h}'
   end
-  s.subspec 'OXCModel' do |OXCModel|
-      OXCModel.source_files = 'OXCMantle/Classes/OXCModel/*.{h,m}'
-      OXCModel.public_header_files = 'OXCMantle/Classes/OXCModel/*.h,'
-      OXCModel.dependency 'Mantle', '~> 2.0.7' 
-      OXCModel.dependency 'OXCMantle/OXCValidation'
+  s.subspec 'OXCModel' do |ss|
+      ss.source_files = 'OXCMantle/Classes/OXCModel/*.{h,m}'
+      ss.public_header_files = 'OXCMantle/Classes/OXCModel/**/*.{h},'
+      ss.dependency 'Mantle', '~> 2.0.7' 
+      ss.dependency 'OXCMantle/OXCValidation'
   end
    
 end

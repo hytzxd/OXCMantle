@@ -12,7 +12,5 @@
 
 
 @interface OXBaseModelValidator : OXBaseValidator
-
 -(id)initWithClass:(Class)baseModelClass;
-
 @end
