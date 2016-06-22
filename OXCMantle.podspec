@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   end
   s.subspec 'OXCModel' do |ss|
       ss.source_files = 'OXCMantle/Classes/OXCModel/*.{h,m}'
-      ss.public_header_files = 'OXCMantle/Classes/OXCModel/**/*.{h},'
+      ss.public_header_files = 'OXCMantle/Classes/OXCModel/**/*.{h}'
       ss.dependency 'Mantle', '~> 2.0.7' 
       ss.dependency 'OXCMantle/OXCValidation'
   end
