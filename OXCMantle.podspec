@@ -16,6 +16,18 @@ Pod::Spec.new do |s|
   s.platform     = :ios ,"7.0"
   s.source       = { :git => "https://github.com/hytzxd/OXCMantle.git", :branch => "master", :tag => '1.1.0' }
   s.requires_arc = true
-  s.source_files  =  'OXCMantle/Classes/**/*.{h,m}'
+  s.source_files  =  'OXCMantle/Classes/*.{h}'
   s.dependency 'Mantle', '~> 2.0.7'
+  s.frameworks = 'Foundation'
+   s.subspec 'OXCValidation' do |OXCValidation|
+      OXCValidation.source_files = 'OXCMantle/Classes/OXCValidation/**/*.{h,m}'
+      OXCValidation.public_header_files = 'OXCMantle/Classes/OXCValidation/**/*h'
+  end
+  s.subspec 'OXCModel' do |OXCModel|
+      OXCModel.source_files = 'OXCMantle/Classes/OXCModel/*.{h,m}'
+      OXCModel.public_header_files = 'OXCMantle/Classes/OXCModel/*.h,'
+      OXCModel.dependency 'Mantle', '~> 2.0.7' 
+      OXCModel.dependency 'OXCMantle/OXCValidation'
+  end
+   
 end
