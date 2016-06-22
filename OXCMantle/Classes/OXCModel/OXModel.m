@@ -10,14 +10,11 @@
 #import "OXModel.h"
 #import "OXValidatorReflection.h"
 #import "NSValueTransformer+MantleExtention.h"
+#import "NSDictionary+MTLMappingAdditions.h"
 @implementation OXModel
 #pragma mark - MTLJSONSerializing
 + (NSDictionary *)JSONKeyPathsByPropertyKey{
-    NSMutableDictionary *keys = [[NSMutableDictionary alloc]initWithCapacity:[[self propertyKeys]count]];
-    for (NSString *propertyKey in  [self propertyKeys]) {
-        keys[propertyKey] = propertyKey;
-    }
-    return keys ;
+    return  [NSDictionary mtl_identityPropertyMapWithModel:self];
 }
 
 + (NSValueTransformer*)JSONTransformerForKey:(NSString*)key{

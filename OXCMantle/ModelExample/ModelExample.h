@@ -10,10 +10,10 @@
 #import "ProtocolExample.h"
 @interface ModelExample : OXModel<ProtocolExample>
 
-@property (assign ,nonatomic)bool  ID;
-@property (copy ,nonatomic)NSString * age;
+@property (copy ,nonatomic)NSString  *ID;
+@property (copy ,nonatomic)NSString  *age;
 @property (strong ,nonatomic)NSArray *names;
 @property (strong ,nonatomic)NSArray *examples;
-@property (strong ,nonatomic)NSDate *date;
+@property (strong ,nonatomic)NSDate  *date;
 
 @end

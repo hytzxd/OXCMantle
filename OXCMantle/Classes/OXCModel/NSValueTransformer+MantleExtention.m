@@ -66,6 +66,9 @@
     return  [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError *__autoreleasing *error){
         if (value == nil) return nil;
         OXBaseValidator *validator = [OXValidatorReflection oxc_validatorForPropertyType:propertyType];
+        if (!validator) {
+            return nil;
+        }
         NSError* err;
         id model = value;
         [validator validateValue:&model error:&err];

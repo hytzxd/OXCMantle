@@ -19,10 +19,12 @@
             *isValid = YES;
 			
             NSString *stringValue = @"NO";
-			
+            if ([value respondsToSelector:@selector(boolValue)]){
+                return @([value boolValue]);
+            }
             if ([value isKindOfClass:[NSString class]]){
                 stringValue = value;
-            } else if ([value respondsToSelector:@selector(stringValue)]){
+            }else  if ([value respondsToSelector:@selector(stringValue)]){
                 stringValue = [value stringValue];
             }
 			

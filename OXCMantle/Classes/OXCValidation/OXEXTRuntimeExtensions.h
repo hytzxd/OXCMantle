@@ -9,12 +9,6 @@
 
 #import <objc/runtime.h>
 
-
-
-
-
-
-
 /**
  * Describes the memory management policy of a property.
  */
