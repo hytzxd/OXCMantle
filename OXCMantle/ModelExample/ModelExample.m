@@ -9,7 +9,7 @@
 #import "ModelExample.h"
 @implementation ModelExample
 + (NSDictionary *)JSONKeyPathsByPropertyKey{
-    NSMutableDictionary* keys = [NSMutableDictionary dictionaryWithDictionary:[super JSONKeyPathsByPropertyKey]];
+    NSMutableDictionary* keys = [NSMutableDictionary dictionaryWithDictionary:[NSDictionary mtl_identityPropertyMapWithModel:self]];
     keys[@"ID"] = @"id";
     return keys;
 }

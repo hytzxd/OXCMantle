@@ -17,16 +17,19 @@
 	
     if (self) {
         self.defaultValidation = ^NSString *(id value, BOOL *isValid, NSError **error){
+            
+            *isValid = YES;
             if (!value) {
-                *isValid = YES;
-                return nil;
-            } else if ([value respondsToSelector:@selector(stringValue)]){
-                *isValid = YES;
-                return [value stringValue];
-            } else {
-                *isValid = NO;
                 return nil;
             }
+            if ([value isKindOfClass:[NSString class]]) {
+                return (NSString *)value;
+            }
+            if ([value respondsToSelector:@selector(stringValue)]){
+                return [value stringValue];
+            }
+            *isValid = NO;
+            return nil;
         };
     }
 

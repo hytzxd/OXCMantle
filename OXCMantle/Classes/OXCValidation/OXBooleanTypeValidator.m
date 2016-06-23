@@ -10,6 +10,7 @@
 #import "OXBooleanTypeValidator.h"
 
 
+
 @implementation OXBooleanTypeValidator
 
 - (id)init {
@@ -17,25 +18,58 @@
     if (self) {
         self.defaultValidation = ^NSNumber * (id value, BOOL *isValid, NSError **error){
             *isValid = YES;
-			
-            NSString *stringValue = @"NO";
-            if ([value respondsToSelector:@selector(boolValue)]){
-                return @([value boolValue]);
+            static NSCharacterSet *dot;
+            static NSDictionary<NSString * , NSNumber *> *booleanDict = nil;
+            static dispatch_once_t onceToken;
+            dispatch_once(&onceToken, ^{
+                dot = [NSCharacterSet characterSetWithRange:NSMakeRange('.', 1)];
+                booleanDict = @{@"TRUE"     :   @(YES),
+                                @"True"     :   @(YES),
+                                @"true"     :   @(YES),
+                                @"FALSE"    :   @(NO),
+                                @"False"    :   @(NO),
+                                @"false"    :   @(NO),
+                                @"YES"      :   @(YES),
+                                @"Yes"      :   @(YES),
+                                @"yes"      :   @(YES),
+                                @"NO"       :   @(NO),
+                                @"No"       :   @(NO),
+                                @"no"       :   @(NO),
+                                @"NIL"      :   (id)kCFNull,
+                                @"Nil"      :   (id)kCFNull,
+                                @"nil"      :   (id)kCFNull,
+                                @"NULL"     :   (id)kCFNull,
+                                @"Null"     :   (id)kCFNull,
+                                @"null"     :   (id)kCFNull,
+                                @"(NULL)"   :   (id)kCFNull,
+                                @"(Null)"   :   (id)kCFNull,
+                                @"(null)"   :   (id)kCFNull,
+                                @"<NULL>"   :   (id)kCFNull,
+                                @"<Null>"   :   (id)kCFNull,
+                                @"<null>"   :   (id)kCFNull};
+                
+            });
+            if (!value || value == (id)kCFNull) return nil;
+            if ([value isKindOfClass:[NSNumber class]]) return value;
+            if ([value isKindOfClass:[NSString class]]) {
+                NSNumber *num = booleanDict[(NSString *)value];
+                if (num) {
+                    if (num == (id)kCFNull) return nil;
+                    return num;
+                }
+                if ([(NSString *)value rangeOfCharacterFromSet:dot].location != NSNotFound) {
+                    const char *cstring = ((NSString *)value).UTF8String;
+                    if (!cstring) return nil;
+                    double num = atof(cstring);
+                    if (isnan(num) || isinf(num)) return nil;
+                    return @(num);
+                } else {
+                    const char *cstring = ((NSString *)value).UTF8String;
+                    if (!cstring) return nil;
+                    return @(atoll(cstring));
+                }
             }
-            if ([value isKindOfClass:[NSString class]]){
-                stringValue = value;
-            }else  if ([value respondsToSelector:@selector(stringValue)]){
-                stringValue = [value stringValue];
-            }
-			
-            if ([stringValue caseInsensitiveCompare:@"true"] == NSOrderedSame ||
-                    [stringValue caseInsensitiveCompare:@"yes"] == NSOrderedSame ||
-                    [stringValue caseInsensitiveCompare:@"y"] == NSOrderedSame ||
-                    [stringValue caseInsensitiveCompare:@"1"] == NSOrderedSame){
-                return @YES;
-            }
-			
-            return @NO;
+            return nil;
         };
     }
 

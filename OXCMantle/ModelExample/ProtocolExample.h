@@ -13,5 +13,5 @@
 @property (nonatomic ,copy ,readonly)NSString *test2;
 @property (nonatomic ,copy ,readonly)NSString *test3;
 @property (nonatomic ,copy ,readonly)NSString *test4;
-@property (nonatomic ,copy ,readwrite)NSString *age;
+
 @end
