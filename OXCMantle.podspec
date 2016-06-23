@@ -1,7 +1,4 @@
-
-
 Pod::Spec.new do |s|
-
   s.name         = "OXCMantle"
   s.version      = "1.1.1"
   s.summary      = "在Mantle的基础上夹生了类型验证，修复了一些bug"
@@ -9,7 +6,6 @@ Pod::Spec.new do |s|
                    在Mantle的基础上夹生了类型验证，修复了一些bug
                    修复了64位NSInteger不能正常转换的问题
                    DESC
-
   s.homepage     = "https://github.com/hytzxd/OXCMantle"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author       = { "Alien" => "308325102@qq.com" }
@@ -29,5 +25,4 @@ Pod::Spec.new do |s|
       ss.dependency 'Mantle', '~> 2.0.7' 
       ss.dependency 'OXCMantle/OXCValidation'
   end
-   
 end
