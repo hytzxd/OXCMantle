@@ -18,7 +18,6 @@
             *value = self.defaultValidation(*value, &_isValid, error);
         }
     }
-
     if (self.isValid && self.postValidation){
         *value = self.postValidation(*value);
     }

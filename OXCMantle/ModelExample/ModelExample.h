@@ -12,7 +12,7 @@
 
 @property (copy ,nonatomic)NSString  *ID;
 @property (assign ,nonatomic)BOOL  age;
-@property (strong ,nonatomic)NSArray *names;
+@property (strong ,nonatomic)NSArray <NSString *> *names;
 @property (strong ,nonatomic)NSArray *examples;
 @property (strong ,nonatomic)NSDate  *date;
 

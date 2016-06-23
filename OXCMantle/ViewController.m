@@ -17,14 +17,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
+    NSTimeInterval time = [[NSDate date] timeIntervalSince1970];;
     NSDictionary *dict = @{@"id":@"999",
-                           @"date":@(460457629.178584),
+                           @"date":@"2016-06-23 06:13:32",
                            @"age":@"421431",
                            @"names":@[@"xd",@"xd",@"xd"],
                            @"examples":@[
                                    @{@"id":@"9999",
-                                     @"date":@(460457629.178584),
+                                     @"date":@"460457629.178584",
                                      @"names":@[@"xd1",@"xd2",@"xd3"]},
                                    @{@"id":@"99900",
                                      @"date":@(460457629.178584),
@@ -34,11 +34,15 @@
                                      @"names":@[@"xd",@"xd",@"xd"]},
                                    
                                    ]};
-    
-//    dict = @{@"id":@(999)};
-    NSError *error = nil;
-    ModelExample *example =  [MTLJSONAdapter modelOfClass:[ModelExample class] fromJSONDictionary:dict error:&error];
-    NSLog(@"%@ %@",example,error);
+    for (int i = 0; i < 10000; i++) {
+        @autoreleasepool {
+            NSError *error = nil;
+            ModelExample *example =  [MTLJSONAdapter modelOfClass:[ModelExample class] fromJSONDictionary:dict error:&error];
+            NSLog(@"%@ %@",example,error);
+        }
+        
+    }
+   
 }
 
 - (void)didReceiveMemoryWarning {

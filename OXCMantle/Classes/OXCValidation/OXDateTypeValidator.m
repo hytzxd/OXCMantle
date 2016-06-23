@@ -133,7 +133,7 @@ static __inline__ __attribute__((always_inline)) NSDate *YYNSDateFromString(__un
         self.defaultValidation = ^NSDate *(id value, BOOL *isValid, NSError **error){
             if ([value isKindOfClass:[NSNumber class]]){
                 *isValid = YES;
-                return [NSDate dateWithTimeIntervalSince1970:[value doubleValue]/1000];
+                return [NSDate dateWithTimeIntervalSince1970:[value doubleValue]];
             }
             
             static dispatch_once_t onceToken;

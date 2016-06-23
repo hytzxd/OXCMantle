@@ -17,9 +17,9 @@
 + (NSValueTransformer *)namesJSONTransformer{
     return [NSValueTransformer oxc_mtl_JSONArrayTransformerWithBasicClass:[NSString class]];
 }
-//+ (NSValueTransformer *)examplesJSONTransformer{
-//    return [MTLJSONAdapter arrayTransformerWithModelClass:[ModelExample class]];
-//}
++ (NSValueTransformer *)examplesJSONTransformer{
+    return [MTLJSONAdapter arrayTransformerWithModelClass:[ModelExample class]];
+}
 
 - (NSString *)test1{
     return @"1";
