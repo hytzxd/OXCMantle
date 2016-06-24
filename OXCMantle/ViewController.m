@@ -22,11 +22,19 @@
                            @"date":@"2016-06-23 06:13:32",
                            @"age":@"421431",
                            @"names":@[@"xd",@"xd",@"xd"],
+                           @"url":@"https://www.google.com",
+                           @"exampleType":@(1),
+                           @"isNew":@"YES",
                            @"examples":@[
-                                   @{@"id":@"9999",
-                                     @"date":@(460457629.178584),
-                                     @"names":@[@"xd1",@"xd2",@"xd3"]},
-                                   @{@"id":@"99900",
+                                   @{@"id":@"999",
+                                     @"date":@"2016-06-23 06:13:32",
+                                     @"age":@"421431",
+                                     @"names":@[@"xd",@"xd",@"xd"],
+                                     @"url":@"https://www.google.com",
+                                     @"exampleType":@2,
+                                     @"isNew":@1,
+                                     @"names":@[@1,@2,@3]},
+                                   @{@"id":@345,
                                      @"date":@(460457629.178584),
                                      @"names":@[@"xd",@"xd",@"xd"]},
                                    @{@"id":@"999999",
@@ -39,6 +47,8 @@
             NSError *error = nil;
             ModelExample *example =  [MTLJSONAdapter modelOfClass:[ModelExample class] fromJSONDictionary:dict error:&error];
             NSLog(@"%@ %@",example,error);
+            NSDictionary *dict = [MTLJSONAdapter JSONDictionaryFromModel:example error:&error];
+            NSLog(@"%@",dict);
         }
         
     }

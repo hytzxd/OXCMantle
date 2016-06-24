@@ -9,6 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @protocol ProtocolExample <NSObject>
+
+@property (copy ,nonatomic)     NSString  *ID;
+@property (strong ,nonatomic)   NSArray <NSString *> *names;
+@property (strong ,nonatomic)   NSArray *examples;
+@property (strong ,nonatomic)   NSDate  *date;
+@property (strong ,nonatomic)   NSURL   *url;
+
 @property (nonatomic ,copy ,readonly)NSString *test1;
 @property (nonatomic ,copy ,readonly)NSString *test2;
 @property (nonatomic ,copy ,readonly)NSString *test3;
