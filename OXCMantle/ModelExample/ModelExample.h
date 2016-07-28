@@ -16,13 +16,13 @@ typedef NS_ENUM(NSInteger ,ModelExampleType) {
 
 @interface ModelExample : OXModel<ProtocolExample>
 
-@property (copy ,nonatomic)     NSString  *ID;
-@property (assign ,nonatomic)   BOOL isNew;
+//@property (copy ,nonatomic)     NSString  *ID;
+//@property (assign ,nonatomic)   BOOL isNew;
 @property (assign ,nonatomic)   NSInteger  age;
-@property (strong ,nonatomic)   NSArray <NSString *> *names;
-@property (strong ,nonatomic)   NSArray *examples;
-@property (strong ,nonatomic)   NSDate  *date;
-@property (strong ,nonatomic)   NSURL   *url;
-@property (assign ,nonatomic)   ModelExampleType exampleType;
+//@property (strong ,nonatomic)   NSArray <NSString *> *names;
+//@property (strong ,nonatomic)   NSArray *examples;
+//@property (strong ,nonatomic)   NSDate  *date;
+//@property (strong ,nonatomic)   NSURL   *url;
+//@property (assign ,nonatomic)   ModelExampleType exampleType;
 
 @end

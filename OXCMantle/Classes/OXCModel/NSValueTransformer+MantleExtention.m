@@ -64,7 +64,7 @@
 
 + (NSValueTransformer *)oxc_mtl_basicClassyTransformerWithBasicType:(OXPropertyType)propertyType{
     return  [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError *__autoreleasing *error){
-        if (value == nil) return nil;
+//        if (value == nil) return nil;
         OXBaseValidator *validator = [OXValidatorReflection oxc_validatorForPropertyType:propertyType];
         if (!validator) {
             return nil;

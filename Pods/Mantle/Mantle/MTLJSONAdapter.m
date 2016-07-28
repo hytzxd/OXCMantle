@@ -306,7 +306,7 @@ NSString * const MTLJSONAdapterThrownExceptionErrorKey = @"MTLJSONAdapterThrownE
 		} else {
 			BOOL success = NO;
 			value = [JSONDictionary mtl_valueForJSONKeyPath:JSONKeyPaths success:&success error:error];
-            NSLog(@"%d",success);
+
 			if (!success) return nil;
 		}
 

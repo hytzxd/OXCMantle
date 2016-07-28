@@ -8,11 +8,11 @@
 
 #import "ModelExample.h"
 @implementation ModelExample
-+ (NSDictionary *)JSONKeyPathsByPropertyKey{
-    NSMutableDictionary* keys = [NSMutableDictionary dictionaryWithDictionary:[NSDictionary mtl_identityPropertyMapWithModel:self]];
-    keys[@"ID"] = @"id";
-    return keys;
-}
+//+ (NSDictionary *)JSONKeyPathsByPropertyKey{
+//    NSMutableDictionary* keys = [NSMutableDictionary dictionaryWithDictionary:[NSDictionary mtl_identityPropertyMapWithModel:self]];
+//    keys[@"ID"] = @"id";
+//    return keys;
+//}
 
 + (NSValueTransformer *)namesJSONTransformer{
     return [NSValueTransformer oxc_mtl_JSONArrayTransformerWithBasicClass:[NSString class]];
