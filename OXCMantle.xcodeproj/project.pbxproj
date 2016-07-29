@@ -34,6 +34,7 @@
 		9BE8B6BF1B72FB14006B8C10 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BE8B6BE1B72FB14006B8C10 /* Images.xcassets */; };
 		9BE8B6C21B72FB14006B8C10 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BE8B6C01B72FB14006B8C10 /* LaunchScreen.xib */; };
 		9BE8B7E21B7300E9006B8C10 /* ModelExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE8B7D01B7300E9006B8C10 /* ModelExample.m */; };
+		9BFEF0501D4A42FD00C2B489 /* OXDValidationFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFEF04E1D4A42FD00C2B489 /* OXDValidationFunctions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,8 @@
 		9BE8B6C11B72FB14006B8C10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9BE8B7CF1B7300E9006B8C10 /* ModelExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelExample.h; sourceTree = "<group>"; };
 		9BE8B7D01B7300E9006B8C10 /* ModelExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelExample.m; sourceTree = "<group>"; };
+		9BFEF04E1D4A42FD00C2B489 /* OXDValidationFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OXDValidationFunctions.m; sourceTree = "<group>"; };
+		9BFEF04F1D4A42FD00C2B489 /* OXDValidationFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OXDValidationFunctions.h; sourceTree = "<group>"; };
 		CE87EDF28C1E88D2E10C27DF /* Pods-OXCMantle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OXCMantle.release.xcconfig"; path = "Pods/Target Support Files/Pods-OXCMantle/Pods-OXCMantle.release.xcconfig"; sourceTree = "<group>"; };
 		E278A0C3ACF562EC7C1C24D9 /* libPods-OXCMantle.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OXCMantle.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA927B5695AC1E92812A897B /* Pods-OXCMantle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OXCMantle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OXCMantle/Pods-OXCMantle.debug.xcconfig"; sourceTree = "<group>"; };
@@ -129,41 +132,9 @@
 		9B14FEEA1D1AF0E7005A33A8 /* OXCValidation */ = {
 			isa = PBXGroup;
 			children = (
-				9B14FEEB1D1AF0E7005A33A8 /* NSString+ValidationUtils.h */,
-				9B14FEEC1D1AF0E7005A33A8 /* NSString+ValidationUtils.m */,
-				9B14FEED1D1AF0E7005A33A8 /* OXArrayTypeValidator.h */,
-				9B14FEEE1D1AF0E7005A33A8 /* OXArrayTypeValidator.m */,
-				9B14FEEF1D1AF0E7005A33A8 /* OXBaseModelValidator.h */,
-				9B14FEF01D1AF0E7005A33A8 /* OXBaseModelValidator.m */,
-				9B14FEF11D1AF0E7005A33A8 /* OXBaseValidator.h */,
-				9B14FEF21D1AF0E7005A33A8 /* OXBaseValidator.m */,
-				9B14FEF31D1AF0E7005A33A8 /* OXBooleanTypeValidator.h */,
-				9B14FEF41D1AF0E7005A33A8 /* OXBooleanTypeValidator.m */,
-				9B14FEF51D1AF0E7005A33A8 /* OXDateTypeValidator.h */,
-				9B14FEF61D1AF0E7005A33A8 /* OXDateTypeValidator.m */,
-				9B14FEF71D1AF0E7005A33A8 /* OXDictionaryTypeValidator.h */,
-				9B14FEF81D1AF0E7005A33A8 /* OXDictionaryTypeValidator.m */,
-				9B14FEF91D1AF0E7005A33A8 /* OXDoubleTypeValidator.h */,
-				9B14FEFA1D1AF0E7005A33A8 /* OXDoubleTypeValidator.m */,
-				9B14FEFB1D1AF0E7005A33A8 /* OXEXTRuntimeExtensions.h */,
-				9B14FEFC1D1AF0E7005A33A8 /* OXEXTRuntimeExtensions.m */,
-				9B14FEFD1D1AF0E7005A33A8 /* OXFloatTypeValidator.h */,
-				9B14FEFE1D1AF0E7005A33A8 /* OXFloatTypeValidator.m */,
-				9B14FEFF1D1AF0E7005A33A8 /* OXIntegerTypeValidator.h */,
-				9B14FF001D1AF0E7005A33A8 /* OXIntegerTypeValidator.m */,
-				9B14FF011D1AF0E7005A33A8 /* OXLongTypeValidator.h */,
-				9B14FF021D1AF0E7005A33A8 /* OXLongTypeValidator.m */,
-				9B14FF031D1AF0E7005A33A8 /* OXNumberTypeValidator.h */,
-				9B14FF041D1AF0E7005A33A8 /* OXNumberTypeValidator.m */,
-				9B14FF051D1AF0E7005A33A8 /* OXStringTypeValidator.h */,
-				9B14FF061D1AF0E7005A33A8 /* OXStringTypeValidator.m */,
-				9B14FF071D1AF0E7005A33A8 /* OXUnsignedIntegerTypeValidator.h */,
-				9B14FF081D1AF0E7005A33A8 /* OXUnsignedIntegerTypeValidator.m */,
-				9B14FF091D1AF0E7005A33A8 /* OXUnsignedLongTypeValicdator.h */,
-				9B14FF0A1D1AF0E7005A33A8 /* OXUnsignedLongTypeValicdator.m */,
-				9B14FF0B1D1AF0E7005A33A8 /* OXValidationFunctions.h */,
-				9B14FF0C1D1AF0E7005A33A8 /* OXValidatorReflection.h */,
-				9B14FF0D1D1AF0E7005A33A8 /* OXValidatorReflection.m */,
+				9BFEF04D1D4A423B00C2B489 /* OXValidationClass */,
+				9BFEF04C1D4A422200C2B489 /* Wenger */,
+				9BFEF04B1D4A41CB00C2B489 /* OXValidationFunctions */,
 			);
 			path = OXCValidation;
 			sourceTree = "<group>";
@@ -230,6 +201,64 @@
 				9B0344F21D10080300532921 /* ProtocolExample.h */,
 			);
 			path = ModelExample;
+			sourceTree = "<group>";
+		};
+		9BFEF04B1D4A41CB00C2B489 /* OXValidationFunctions */ = {
+			isa = PBXGroup;
+			children = (
+				9B14FF0B1D1AF0E7005A33A8 /* OXValidationFunctions.h */,
+				9BFEF04F1D4A42FD00C2B489 /* OXDValidationFunctions.h */,
+				9BFEF04E1D4A42FD00C2B489 /* OXDValidationFunctions.m */,
+			);
+			name = OXValidationFunctions;
+			sourceTree = "<group>";
+		};
+		9BFEF04C1D4A422200C2B489 /* Wenger */ = {
+			isa = PBXGroup;
+			children = (
+				9B14FEEB1D1AF0E7005A33A8 /* NSString+ValidationUtils.h */,
+				9B14FEEC1D1AF0E7005A33A8 /* NSString+ValidationUtils.m */,
+				9B14FF0C1D1AF0E7005A33A8 /* OXValidatorReflection.h */,
+				9B14FF0D1D1AF0E7005A33A8 /* OXValidatorReflection.m */,
+			);
+			name = Wenger;
+			sourceTree = "<group>";
+		};
+		9BFEF04D1D4A423B00C2B489 /* OXValidationClass */ = {
+			isa = PBXGroup;
+			children = (
+				9B14FEED1D1AF0E7005A33A8 /* OXArrayTypeValidator.h */,
+				9B14FEEE1D1AF0E7005A33A8 /* OXArrayTypeValidator.m */,
+				9B14FEEF1D1AF0E7005A33A8 /* OXBaseModelValidator.h */,
+				9B14FEF01D1AF0E7005A33A8 /* OXBaseModelValidator.m */,
+				9B14FEF11D1AF0E7005A33A8 /* OXBaseValidator.h */,
+				9B14FEF21D1AF0E7005A33A8 /* OXBaseValidator.m */,
+				9B14FEF31D1AF0E7005A33A8 /* OXBooleanTypeValidator.h */,
+				9B14FEF41D1AF0E7005A33A8 /* OXBooleanTypeValidator.m */,
+				9B14FEF51D1AF0E7005A33A8 /* OXDateTypeValidator.h */,
+				9B14FEF61D1AF0E7005A33A8 /* OXDateTypeValidator.m */,
+				9B14FEF71D1AF0E7005A33A8 /* OXDictionaryTypeValidator.h */,
+				9B14FEF81D1AF0E7005A33A8 /* OXDictionaryTypeValidator.m */,
+				9B14FEF91D1AF0E7005A33A8 /* OXDoubleTypeValidator.h */,
+				9B14FEFA1D1AF0E7005A33A8 /* OXDoubleTypeValidator.m */,
+				9B14FEFB1D1AF0E7005A33A8 /* OXEXTRuntimeExtensions.h */,
+				9B14FEFC1D1AF0E7005A33A8 /* OXEXTRuntimeExtensions.m */,
+				9B14FEFD1D1AF0E7005A33A8 /* OXFloatTypeValidator.h */,
+				9B14FEFE1D1AF0E7005A33A8 /* OXFloatTypeValidator.m */,
+				9B14FEFF1D1AF0E7005A33A8 /* OXIntegerTypeValidator.h */,
+				9B14FF001D1AF0E7005A33A8 /* OXIntegerTypeValidator.m */,
+				9B14FF011D1AF0E7005A33A8 /* OXLongTypeValidator.h */,
+				9B14FF021D1AF0E7005A33A8 /* OXLongTypeValidator.m */,
+				9B14FF031D1AF0E7005A33A8 /* OXNumberTypeValidator.h */,
+				9B14FF041D1AF0E7005A33A8 /* OXNumberTypeValidator.m */,
+				9B14FF051D1AF0E7005A33A8 /* OXStringTypeValidator.h */,
+				9B14FF061D1AF0E7005A33A8 /* OXStringTypeValidator.m */,
+				9B14FF071D1AF0E7005A33A8 /* OXUnsignedIntegerTypeValidator.h */,
+				9B14FF081D1AF0E7005A33A8 /* OXUnsignedIntegerTypeValidator.m */,
+				9B14FF091D1AF0E7005A33A8 /* OXUnsignedLongTypeValicdator.h */,
+				9B14FF0A1D1AF0E7005A33A8 /* OXUnsignedLongTypeValicdator.m */,
+			);
+			name = OXValidationClass;
 			sourceTree = "<group>";
 		};
 		BFC88EC68F60884A5CF146AA /* Pods */ = {
@@ -378,6 +407,7 @@
 				9B14FEE91D1AF0CB005A33A8 /* OXModel.m in Sources */,
 				9B14FF141D1AF0E7005A33A8 /* OXDictionaryTypeValidator.m in Sources */,
 				9BE8B7E21B7300E9006B8C10 /* ModelExample.m in Sources */,
+				9BFEF0501D4A42FD00C2B489 /* OXDValidationFunctions.m in Sources */,
 				9B14FF131D1AF0E7005A33A8 /* OXDateTypeValidator.m in Sources */,
 				9B14FF101D1AF0E7005A33A8 /* OXBaseModelValidator.m in Sources */,
 				9B14FF1C1D1AF0E7005A33A8 /* OXUnsignedIntegerTypeValidator.m in Sources */,

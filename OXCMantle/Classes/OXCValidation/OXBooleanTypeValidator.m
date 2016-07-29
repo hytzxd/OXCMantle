@@ -62,7 +62,7 @@ static __inline__ __attribute__((always_inline)) NSNumber *YYNSNumberCreateFromI
             return @(atoll(cstring));
         }
     }
-    return nil;
+    return @0;
 }
 
 @implementation OXBooleanTypeValidator

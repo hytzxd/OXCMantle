@@ -44,7 +44,7 @@
 //                                   ]};
     
     NSDictionary *dict = @{@"id":@"999",
-                           @"date":@"2016-06-23 06:13:32",
+                           @"date":[NSNull null],
                            @"age":[NSNull null],
                            @"names":@[@"xd",@"xd",@"xd"],
                            @"url":@"https://www.google.com",
