@@ -58,106 +58,129 @@
     return propertyTypesDict;
 }
 
-
-+ (void)oxc_addValidatorForProperty:(NSString *)propertyName type:(OXPropertyType)propertyType clazz:(Class)clazz{
-    IMP implementation;
-    switch (propertyType){
-        case OXPropertyTypeString:
-            implementation = (IMP)validateStringProperty;
-            break;
-        case OXPropertyTypeBool:
-            implementation = (IMP)validateBoolProperty;
-            break;
-        case OXPropertyTypeNumber:
-            implementation = (IMP)validateNumberProperty;
-            break;
-        case OXPropertyTypeInteger:
-            implementation = (IMP)validateIntegerProperty;
-            break;
-        case OXPropertyTypeFloat:
-            implementation = (IMP)validateFloatProperty;
-            break;
-        case OXPropertyTypeArray:
-        case OXPropertyTypeMutableArray:
-            implementation = (IMP)validateArrayProperty;
-            break;
-        case OXPropertyTypeDictionary:
-        case OXPropertyTypeMutableDictionary:
-            implementation = (IMP)validateDictionaryProperty;
-            break;
-        case OXPropertyTypeUnsignedInteger:
-            implementation = (IMP)validateUnsignedIntegerProperty;
-            break;
-        case OXPropertyTypeDate:
-            implementation = (IMP)validateDateProperty;
-            break;
-        case OXPropertyTypeDouble:
-            implementation = (IMP)validateDoubleProperty;
-            break;
-        case OXPropertyTypeLong:
-            implementation = (IMP)validateLongProperty;
-            break;
-        case OXPropertyTypeUnsignedLong:
-            implementation = (IMP)validateUnsignedLongProperty;
-            break;
-        default:
-            implementation = nil;
-            break;
-    }
-    if (implementation){
-        NSString *methodName = [self oxc_generateValidationMethodName:propertyName];
-        class_addMethod(clazz, NSSelectorFromString(methodName), implementation, "c@:^@^@");
-    }
-}
-
-+(NSString *)oxc_generateValidationMethodName:(NSString *)key{
-    return [NSString stringWithFormat:@"validate%@:error:", [NSString capitalizeFirstCharacter:key]];
-}
-
 + (OXBaseValidator *)oxc_validatorForPropertyType:(OXPropertyType)propertyType{
-    OXBaseValidator *validator = nil;
-    switch (propertyType){
-        case OXPropertyTypeString:
-            validator = [OXStringTypeValidator new];
-            break;
-        case OXPropertyTypeBool:
-            validator = [OXBooleanTypeValidator new];;
-            break;
-        case OXPropertyTypeNumber:
-            validator = [OXNumberTypeValidator new];
-            break;
-        case OXPropertyTypeInteger:
-            validator = [OXIntegerTypeValidator new];
-            break;
-        case OXPropertyTypeFloat:
-            validator = [OXFloatTypeValidator new];
-            break;
-        case OXPropertyTypeArray:
-        case OXPropertyTypeMutableArray:
-            validator = [OXArrayTypeValidator new];
-            break;
-        case OXPropertyTypeDictionary:
-        case OXPropertyTypeMutableDictionary:
-            validator = [OXDictionaryTypeValidator new];
-            break;
-        case OXPropertyTypeUnsignedInteger:
-            validator = [OXUnsignedIntegerTypeValidator new];
-            break;
-        case OXPropertyTypeDate:
-            validator =[OXDateTypeValidator new];
-            break;
-        case OXPropertyTypeDouble:
-            validator = [OXDoubleTypeValidator new];
-            break;
-        case OXPropertyTypeLong:
-            validator = [OXLongTypeValidator new];
-            break;
-        case OXPropertyTypeUnsignedLong:
-            validator = [OXUnsignedLongTypeValicdator new];
-            break;
-        default:
-            break;
+    static NSDictionary <NSString *,OXBaseValidator *> *validatorDict = nil;
+    if (validatorDict.allKeys.count == 0) {
+        validatorDict = @{
+                          [NSString stringWithFormat:@"%lu",(unsigned long)OXPropertyTypeString]:               [OXStringTypeValidator new],
+                          [NSString stringWithFormat:@"%lu",(unsigned long)OXPropertyTypeBool]:                 [OXStringTypeValidator new],
+                          [NSString stringWithFormat:@"%lu",(unsigned long)OXPropertyTypeNumber]:               [OXNumberTypeValidator new],
+                          [NSString stringWithFormat:@"%lu",(unsigned long)OXPropertyTypeInteger]:              [OXIntegerTypeValidator new],
+                          [NSString stringWithFormat:@"%lu",(unsigned long)OXPropertyTypeFloat]:                [OXFloatTypeValidator new],
+                          [NSString stringWithFormat:@"%lu",(unsigned long)OXPropertyTypeArray]:                [OXArrayTypeValidator new],
+                          [NSString stringWithFormat:@"%lu",(unsigned long)OXPropertyTypeMutableArray]:         [OXArrayTypeValidator new],
+                          [NSString stringWithFormat:@"%lu",(unsigned long)OXPropertyTypeDictionary]:           [OXDictionaryTypeValidator new],
+                          [NSString stringWithFormat:@"%lu",(unsigned long)OXPropertyTypeMutableDictionary]:    [OXDictionaryTypeValidator new],
+                          [NSString stringWithFormat:@"%lu",(unsigned long)OXPropertyTypeUnsignedInteger]:      [OXUnsignedIntegerTypeValidator new],
+                          [NSString stringWithFormat:@"%lu",(unsigned long)OXPropertyTypeDate]:                 [OXDateTypeValidator new],
+                          [NSString stringWithFormat:@"%lu",(unsigned long)OXPropertyTypeDouble]:               [OXDoubleTypeValidator new],
+                          [NSString stringWithFormat:@"%lu",(unsigned long)OXPropertyTypeLong]:                 [OXLongTypeValidator new],
+                          [NSString stringWithFormat:@"%lu",(unsigned long)OXPropertyTypeUnsignedLong]:         [OXUnsignedLongTypeValicdator new]
+                          };
     }
-    return validator;
+    return validatorDict[[NSString stringWithFormat:@"%lu",(unsigned long)propertyType]];
+//    OXBaseValidator *validator = nil;
+//    switch (propertyType){
+//        case OXPropertyTypeString:
+//            validator = [OXStringTypeValidator new];
+//            break;
+//        case OXPropertyTypeBool:
+//            validator = [OXBooleanTypeValidator new];;
+//            break;
+//        case OXPropertyTypeNumber:
+//            validator = [OXNumberTypeValidator new];
+//            break;
+//        case OXPropertyTypeInteger:
+//            validator = [OXIntegerTypeValidator new];
+//            break;
+//        case OXPropertyTypeFloat:
+//            validator = [OXFloatTypeValidator new];
+//            break;
+//        case OXPropertyTypeArray:
+//        case OXPropertyTypeMutableArray:
+//            validator = [OXArrayTypeValidator new];
+//            break;
+//        case OXPropertyTypeDictionary:
+//        case OXPropertyTypeMutableDictionary:
+//            validator = [OXDictionaryTypeValidator new];
+//            break;
+//        case OXPropertyTypeUnsignedInteger:
+//            validator = [OXUnsignedIntegerTypeValidator new];
+//            break;
+//        case OXPropertyTypeDate:
+//            validator =[OXDateTypeValidator new];
+//            break;
+//        case OXPropertyTypeDouble:
+//            validator = [OXDoubleTypeValidator new];
+//            break;
+//        case OXPropertyTypeLong:
+//            validator = [OXLongTypeValidator new];
+//            break;
+//        case OXPropertyTypeUnsignedLong:
+//            validator = [OXUnsignedLongTypeValicdator new];
+//            break;
+//        default:
+//            break;
+//    }
+//    return validator;
 }
+
+
+//
+//
+//+ (void)oxc_addValidatorForProperty:(NSString *)propertyName type:(OXPropertyType)propertyType clazz:(Class)clazz{
+//    IMP implementation;
+//    switch (propertyType){
+//        case OXPropertyTypeString:
+//            implementation = (IMP)validateStringProperty;
+//            break;
+//        case OXPropertyTypeBool:
+//            implementation = (IMP)validateBoolProperty;
+//            break;
+//        case OXPropertyTypeNumber:
+//            implementation = (IMP)validateNumberProperty;
+//            break;
+//        case OXPropertyTypeInteger:
+//            implementation = (IMP)validateIntegerProperty;
+//            break;
+//        case OXPropertyTypeFloat:
+//            implementation = (IMP)validateFloatProperty;
+//            break;
+//        case OXPropertyTypeArray:
+//        case OXPropertyTypeMutableArray:
+//            implementation = (IMP)validateArrayProperty;
+//            break;
+//        case OXPropertyTypeDictionary:
+//        case OXPropertyTypeMutableDictionary:
+//            implementation = (IMP)validateDictionaryProperty;
+//            break;
+//        case OXPropertyTypeUnsignedInteger:
+//            implementation = (IMP)validateUnsignedIntegerProperty;
+//            break;
+//        case OXPropertyTypeDate:
+//            implementation = (IMP)validateDateProperty;
+//            break;
+//        case OXPropertyTypeDouble:
+//            implementation = (IMP)validateDoubleProperty;
+//            break;
+//        case OXPropertyTypeLong:
+//            implementation = (IMP)validateLongProperty;
+//            break;
+//        case OXPropertyTypeUnsignedLong:
+//            implementation = (IMP)validateUnsignedLongProperty;
+//            break;
+//        default:
+//            implementation = nil;
+//            break;
+//    }
+//    if (implementation){
+//        NSString *methodName = [self oxc_generateValidationMethodName:propertyName];
+//        class_addMethod(clazz, NSSelectorFromString(methodName), implementation, "c@:^@^@");
+//    }
+//}
+//
+//+(NSString *)oxc_generateValidationMethodName:(NSString *)key{
+//    return [NSString stringWithFormat:@"validate%@:error:", [NSString capitalizeFirstCharacter:key]];
+//}
+
 @end

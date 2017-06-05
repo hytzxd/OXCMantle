@@ -16,32 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-  
-//    NSDictionary *dict = @{@"id":@"999",
-//                           @"date":@"2016-06-23 06:13:32",
-//                           @"age":[NSNull null],
-//                           @"names":@[@"xd",@"xd",@"xd"],
-//                           @"url":@"https://www.google.com",
-//                           @"exampleType":@(1),
-//                           @"isNew":@"YES",
-//                           @"examples":@[
-//                                   @{@"id":@"999",
-//                                     @"date":@"2016-06-23 06:13:32",
-//                                     @"age":@"421431",
-//                                     @"names":@[@"xd",@"xd",@"xd"],
-//                                     @"url":@"https://www.google.com",
-//                                     @"exampleType":@2,
-//                                     @"isNew":@1,
-//                                     @"names":@[@1,@2,@3]},
-//                                   @{@"id":@345,
-//                                     @"date":@(460457629.178584),
-//                                     @"names":@[@"xd",@"xd",@"xd"]},
-//                                   @{@"id":@"999999",
-//                                     @"date":@(460457629.178584),
-//                                     @"names":@[@"xd",@"xd",@"xd"]},
-//                                   
-//                                   ]};
     
     NSDictionary *dict = @{@"id":@"999",
                            @"date":[NSNull null],
@@ -49,7 +23,15 @@
                            @"names":@[@"xd",@"xd",@"xd"],
                            @"url":@"https://www.google.com",
                            @"exampleType":@(1),
-                           @"isNew":@"YES"};
+                           @"isNew":@"YES",
+                           @"example":@{@"id":@"999",
+                                        @"date":[NSNull null],
+                                        @"age":[NSNull null],
+                                        @"names":@[@"xd",@"xd",@"xd"],
+                                        @"url":@"https://www.google.com",
+                                        @"exampleType":@(1),
+                                        @"isNew":@"YES",
+                                        @"example":@{}}};
     
    
     

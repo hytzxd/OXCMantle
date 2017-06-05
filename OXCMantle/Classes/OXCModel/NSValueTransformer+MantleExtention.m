@@ -63,15 +63,23 @@
 
 
 + (NSValueTransformer *)oxc_mtl_basicClassyTransformerWithBasicType:(OXPropertyType)propertyType{
-    return  [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError *__autoreleasing *error){
-//        if (value == nil) return nil;
-        OXBaseValidator *validator = [OXValidatorReflection oxc_validatorForPropertyType:propertyType];
-        if (!validator) {
-            return nil;
-        }
+    
+    NSValueTransformer *transformer = [NSValueTransformer valueTransformerForName:[NSString stringWithFormat:@"oxc_mtl_%lu",(unsigned long)propertyType]];
+    if (transformer) {
+        return transformer;
+    }
+    
+    OXBaseValidator *transformerValidator = [OXValidatorReflection oxc_validatorForPropertyType:propertyType];
+    if (!transformerValidator) {
+        return nil;
+    }
+    
+    transformer =
+    [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError *__autoreleasing *error){
+
         NSError* err;
         id model = value;
-        [validator validateValue:&model error:&err];
+        [transformerValidator validateValue:&model error:&err];
         return model;
     } reverseBlock:^id(id value, BOOL *success, NSError *__autoreleasing *error) {
        
@@ -82,6 +90,8 @@
         return [model description];
     }];
     
+    [NSValueTransformer setValueTransformer:transformer forName:[NSString stringWithFormat:@"oxc_mtl_%lu",(unsigned long)propertyType]];
+    return transformer;
 }
 
 
