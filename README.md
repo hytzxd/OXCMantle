@@ -1,7 +1,6 @@
+[![Build Status](https://travis-ci.org/hytzxd/OXCMantle.svg?branch=master)](https://travis-ci.org/hytzxd/OXCMantle)
 # OXCMantle
 在mantle上加入了类型验证的功能。(json转model)
-
-
 该项目已纳入Cocoapods管理，目前是1.0.1版本
 
 你可以使用如下的方式来将本项目加入自己的工程
