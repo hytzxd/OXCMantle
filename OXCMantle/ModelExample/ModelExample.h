@@ -16,6 +16,7 @@ typedef NS_ENUM(NSInteger ,ModelExampleType) {
 
 @interface ModelExample : OXModel<ProtocolExample>
 
+
 @property (copy ,nonatomic)     NSString  *ID;
 @property (assign ,nonatomic)   BOOL isNew;
 @property (assign ,nonatomic)   NSInteger  age;

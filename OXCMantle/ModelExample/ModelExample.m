@@ -13,29 +13,21 @@
     keys[@"ID"] = @"id";
     return keys;
 }
-
 + (NSValueTransformer *)namesJSONTransformer{
     return [NSValueTransformer oxc_mtl_JSONArrayTransformerWithBasicClass:[NSString class]];
 }
 + (NSValueTransformer *)examplesJSONTransformer{
     return [MTLJSONAdapter arrayTransformerWithModelClass:[ModelExample class]];
 }
-//+ (NSValueTransformer *)urlJSONTransformer {
-//    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
-//}
-
 + (NSValueTransformer *)exampleTypeJSONTransformer {
-    
-    return  [NSValueTransformer mtl_valueMappingTransformerWithDictionary:@{@(ModelExampleTypeEnable):@(ModelExampleTypeEnable),
-                                                                            @(ModelExampleTypeDisable):@(ModelExampleTypeDisable)}
-                                                             defaultValue:@(ModelExampleTypeUnknow)
-                                                      reverseDefaultValue:@(ModelExampleTypeUnknow)];
-//    return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:@{
-//                                                                           @(ModelExampleTypeEnable):@(ModelExampleTypeEnable),
-//                                                                           @(ModelExampleTypeDisable):@(ModelExampleTypeDisable),
-////                                                                           @"1":@(ModelExampleTypeDisable),
-////                                                                           @"2":@(ModelExampleTypeEnable)
-//                                                                           }];
+    return  [NSValueTransformer
+             mtl_valueMappingTransformerWithDictionary:
+                          @{@(ModelExampleTypeEnable):@(ModelExampleTypeEnable),
+                            @(ModelExampleTypeDisable):@(ModelExampleTypeDisable)}
+                                         defaultValue:@(ModelExampleTypeUnknow)
+                                reverseDefaultValue: @(ModelExampleTypeUnknow)];
+            
+
 }
 
 - (NSString *)test1{

@@ -17,13 +17,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSDictionary *dict = @{@"id":@"999",
+    NSDictionary *dict = @{@"description":@"",
+                           @"id":@"999",
                            @"date":[NSNull null],
-                           @"age":[NSNull null],
-                           @"names":@[@"xd",@"xd",@"xd"],
+                           @"age":@99,
+                           @"names":@[@1,@0,@"xd"],
                            @"url":@"https://www.google.com",
                            @"exampleType":@(1),
-                           @"isNew":@"YES",
+                           @"isNew":@0,
                            @"example":@{@"id":@"999",
                                         @"date":[NSNull null],
                                         @"age":[NSNull null],
@@ -38,11 +39,6 @@
             NSError *error = nil;
             ModelExample *example =  [MTLJSONAdapter modelOfClass:[ModelExample class] fromJSONDictionary:dict error:&error];
             NSLog(@"%@ %@",example,error);
-          
-        
-        
-    
-   
 }
 
 - (void)didReceiveMemoryWarning {
