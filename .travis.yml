@@ -22,9 +22,8 @@ matrix:
         - XCODE_SDK=iphonesimulator
         - XCODE_DESTINATION="name=iPhone 7"
 notifications:
-  email: 
-      308325102@qq.com
-  campfire:
+  email:
+        - 308325102@qq.com
     on_success: always
     on_failure: always
     
