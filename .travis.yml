@@ -23,8 +23,7 @@ matrix:
         - XCODE_DESTINATION="name=iPhone 7"
 notifications:
   email: 
-  recipients:
-      - zhangxudong5999@gmail.com
+      308325102@qq.com
   campfire:
     on_success: always
     on_failure: always
