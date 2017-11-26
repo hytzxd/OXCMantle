@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6B331B572713B32189F7C2DD /* libPods-OXCMantle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E278A0C3ACF562EC7C1C24D9 /* libPods-OXCMantle.a */; };
+		85566A171FCAA68F006877EB /* OXCoreDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85566A161FCAA68F006877EB /* OXCoreDataViewController.m */; };
+		85566A461FCAAE4C006877EB /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 85566A441FCAAE4C006877EB /* Model.xcdatamodeld */; };
 		9B14FEE81D1AF0CB005A33A8 /* NSValueTransformer+MantleExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B14FEE51D1AF0CB005A33A8 /* NSValueTransformer+MantleExtention.m */; };
 		9B14FEE91D1AF0CB005A33A8 /* OXModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B14FEE71D1AF0CB005A33A8 /* OXModel.m */; };
 		9B14FF0E1D1AF0E7005A33A8 /* NSString+ValidationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B14FEEC1D1AF0E7005A33A8 /* NSString+ValidationUtils.m */; };
@@ -38,6 +40,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		85566A151FCAA68F006877EB /* OXCoreDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OXCoreDataViewController.h; sourceTree = "<group>"; };
+		85566A161FCAA68F006877EB /* OXCoreDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OXCoreDataViewController.m; sourceTree = "<group>"; };
+		85566A451FCAAE4C006877EB /* Model.xcdatamodel */ = {isa = PBXFileReference; explicitFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9B0344F21D10080300532921 /* ProtocolExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolExample.h; sourceTree = "<group>"; };
 		9B14FEE41D1AF0CB005A33A8 /* NSValueTransformer+MantleExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValueTransformer+MantleExtention.h"; sourceTree = "<group>"; };
 		9B14FEE51D1AF0CB005A33A8 /* NSValueTransformer+MantleExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValueTransformer+MantleExtention.m"; sourceTree = "<group>"; };
@@ -110,6 +115,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		85566A131FCAA655006877EB /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				9BE8B6B81B72FB14006B8C10 /* ViewController.h */,
+				9BE8B6B91B72FB14006B8C10 /* ViewController.m */,
+				9BE8B7CF1B7300E9006B8C10 /* ModelExample.h */,
+				9BE8B7D01B7300E9006B8C10 /* ModelExample.m */,
+				9B0344F21D10080300532921 /* ProtocolExample.h */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		85566A141FCAA664006877EB /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				85566A5F1FCAB27F006877EB /* ManagedObj */,
+				85566A151FCAA68F006877EB /* OXCoreDataViewController.h */,
+				85566A161FCAA68F006877EB /* OXCoreDataViewController.m */,
+				85566A441FCAAE4C006877EB /* Model.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		85566A5F1FCAB27F006877EB /* ManagedObj */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ManagedObj;
+			sourceTree = "<group>";
+		};
 		99F0FFA48570BFF60845C9DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,8 +199,6 @@
 				9BE8B7CE1B7300E9006B8C10 /* ModelExample */,
 				9BE8B6B51B72FB14006B8C10 /* AppDelegate.h */,
 				9BE8B6B61B72FB14006B8C10 /* AppDelegate.m */,
-				9BE8B6B81B72FB14006B8C10 /* ViewController.h */,
-				9BE8B6B91B72FB14006B8C10 /* ViewController.m */,
 				9BE8B6BB1B72FB14006B8C10 /* Main.storyboard */,
 				9BE8B6BE1B72FB14006B8C10 /* Images.xcassets */,
 				9BE8B6C01B72FB14006B8C10 /* LaunchScreen.xib */,
@@ -196,9 +229,8 @@
 		9BE8B7CE1B7300E9006B8C10 /* ModelExample */ = {
 			isa = PBXGroup;
 			children = (
-				9BE8B7CF1B7300E9006B8C10 /* ModelExample.h */,
-				9BE8B7D01B7300E9006B8C10 /* ModelExample.m */,
-				9B0344F21D10080300532921 /* ProtocolExample.h */,
+				85566A141FCAA664006877EB /* CoreData */,
+				85566A131FCAA655006877EB /* JSON */,
 			);
 			path = ModelExample;
 			sourceTree = "<group>";
@@ -402,6 +434,7 @@
 				9BE8B6B71B72FB14006B8C10 /* AppDelegate.m in Sources */,
 				9B14FF1D1D1AF0E7005A33A8 /* OXUnsignedLongTypeValicdator.m in Sources */,
 				9B14FF171D1AF0E7005A33A8 /* OXFloatTypeValidator.m in Sources */,
+				85566A461FCAAE4C006877EB /* Model.xcdatamodeld in Sources */,
 				9B14FF151D1AF0E7005A33A8 /* OXDoubleTypeValidator.m in Sources */,
 				9BE8B6B41B72FB14006B8C10 /* main.m in Sources */,
 				9B14FEE91D1AF0CB005A33A8 /* OXModel.m in Sources */,
@@ -412,6 +445,7 @@
 				9B14FF101D1AF0E7005A33A8 /* OXBaseModelValidator.m in Sources */,
 				9B14FF1C1D1AF0E7005A33A8 /* OXUnsignedIntegerTypeValidator.m in Sources */,
 				9B14FF161D1AF0E7005A33A8 /* OXEXTRuntimeExtensions.m in Sources */,
+				85566A171FCAA68F006877EB /* OXCoreDataViewController.m in Sources */,
 				9B14FF0F1D1AF0E7005A33A8 /* OXArrayTypeValidator.m in Sources */,
 				9B14FF1A1D1AF0E7005A33A8 /* OXNumberTypeValidator.m in Sources */,
 				9B14FF191D1AF0E7005A33A8 /* OXLongTypeValidator.m in Sources */,
@@ -567,6 +601,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		85566A441FCAAE4C006877EB /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				85566A451FCAAE4C006877EB /* Model.xcdatamodel */,
+			);
+			currentVersion = 85566A451FCAAE4C006877EB /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 9BE8B6A61B72FB14006B8C10 /* Project object */;
 }
