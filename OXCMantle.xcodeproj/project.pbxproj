@@ -10,6 +10,10 @@
 		6B331B572713B32189F7C2DD /* libPods-OXCMantle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E278A0C3ACF562EC7C1C24D9 /* libPods-OXCMantle.a */; };
 		85566A171FCAA68F006877EB /* OXCoreDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85566A161FCAA68F006877EB /* OXCoreDataViewController.m */; };
 		85566A461FCAAE4C006877EB /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 85566A441FCAAE4C006877EB /* Model.xcdatamodeld */; };
+		8566CFA11FCAC4130036149E /* MTLManagedObjectAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8566CF991FCAC4130036149E /* MTLManagedObjectAdapter.m */; };
+		8566CFA21FCAC4130036149E /* EXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = 8566CF9D1FCAC4130036149E /* EXTScope.m */; };
+		8566CFA31FCAC4130036149E /* EXTRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8566CF9E1FCAC4130036149E /* EXTRuntimeExtensions.m */; };
+		8566CFA71FCAC71D0036149E /* OXCoreDataMantleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8566CFA61FCAC71D0036149E /* OXCoreDataMantleVC.m */; };
 		9B14FEE81D1AF0CB005A33A8 /* NSValueTransformer+MantleExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B14FEE51D1AF0CB005A33A8 /* NSValueTransformer+MantleExtention.m */; };
 		9B14FEE91D1AF0CB005A33A8 /* OXModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B14FEE71D1AF0CB005A33A8 /* OXModel.m */; };
 		9B14FF0E1D1AF0E7005A33A8 /* NSString+ValidationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B14FEEC1D1AF0E7005A33A8 /* NSString+ValidationUtils.m */; };
@@ -43,6 +47,16 @@
 		85566A151FCAA68F006877EB /* OXCoreDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OXCoreDataViewController.h; sourceTree = "<group>"; };
 		85566A161FCAA68F006877EB /* OXCoreDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OXCoreDataViewController.m; sourceTree = "<group>"; };
 		85566A451FCAAE4C006877EB /* Model.xcdatamodel */ = {isa = PBXFileReference; explicitFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		8566CF981FCAC4130036149E /* MTLManagedObjectAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTLManagedObjectAdapter.h; path = "../../../../../../Downloads/MTLManagedObjectAdapter-master/MTLManagedObjectAdapter/MTLManagedObjectAdapter.h"; sourceTree = "<group>"; };
+		8566CF991FCAC4130036149E /* MTLManagedObjectAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTLManagedObjectAdapter.m; path = "../../../../../../Downloads/MTLManagedObjectAdapter-master/MTLManagedObjectAdapter/MTLManagedObjectAdapter.m"; sourceTree = "<group>"; };
+		8566CF9B1FCAC4130036149E /* EXTRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTRuntimeExtensions.h; sourceTree = "<group>"; };
+		8566CF9C1FCAC4130036149E /* metamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metamacros.h; sourceTree = "<group>"; };
+		8566CF9D1FCAC4130036149E /* EXTScope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXTScope.m; sourceTree = "<group>"; };
+		8566CF9E1FCAC4130036149E /* EXTRuntimeExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXTRuntimeExtensions.m; sourceTree = "<group>"; };
+		8566CF9F1FCAC4130036149E /* EXTScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTScope.h; sourceTree = "<group>"; };
+		8566CFA01FCAC4130036149E /* EXTKeyPathCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTKeyPathCoding.h; sourceTree = "<group>"; };
+		8566CFA51FCAC71D0036149E /* OXCoreDataMantleVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OXCoreDataMantleVC.h; sourceTree = "<group>"; };
+		8566CFA61FCAC71D0036149E /* OXCoreDataMantleVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OXCoreDataMantleVC.m; sourceTree = "<group>"; };
 		9B0344F21D10080300532921 /* ProtocolExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolExample.h; sourceTree = "<group>"; };
 		9B14FEE41D1AF0CB005A33A8 /* NSValueTransformer+MantleExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValueTransformer+MantleExtention.h"; sourceTree = "<group>"; };
 		9B14FEE51D1AF0CB005A33A8 /* NSValueTransformer+MantleExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValueTransformer+MantleExtention.m"; sourceTree = "<group>"; };
@@ -145,6 +159,39 @@
 			path = ManagedObj;
 			sourceTree = "<group>";
 		};
+		8566CF921FCAC3610036149E /* MantleCoreData */ = {
+			isa = PBXGroup;
+			children = (
+				8566CF9A1FCAC4130036149E /* extobjc */,
+				8566CF981FCAC4130036149E /* MTLManagedObjectAdapter.h */,
+				8566CF991FCAC4130036149E /* MTLManagedObjectAdapter.m */,
+			);
+			path = MantleCoreData;
+			sourceTree = "<group>";
+		};
+		8566CF9A1FCAC4130036149E /* extobjc */ = {
+			isa = PBXGroup;
+			children = (
+				8566CF9B1FCAC4130036149E /* EXTRuntimeExtensions.h */,
+				8566CF9C1FCAC4130036149E /* metamacros.h */,
+				8566CF9D1FCAC4130036149E /* EXTScope.m */,
+				8566CF9E1FCAC4130036149E /* EXTRuntimeExtensions.m */,
+				8566CF9F1FCAC4130036149E /* EXTScope.h */,
+				8566CFA01FCAC4130036149E /* EXTKeyPathCoding.h */,
+			);
+			name = extobjc;
+			path = "../../../../../../Downloads/MTLManagedObjectAdapter-master/MTLManagedObjectAdapter/extobjc";
+			sourceTree = "<group>";
+		};
+		8566CFA41FCAC6EC0036149E /* CoreDataMantle */ = {
+			isa = PBXGroup;
+			children = (
+				8566CFA51FCAC71D0036149E /* OXCoreDataMantleVC.h */,
+				8566CFA61FCAC71D0036149E /* OXCoreDataMantleVC.m */,
+			);
+			path = CoreDataMantle;
+			sourceTree = "<group>";
+		};
 		99F0FFA48570BFF60845C9DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +266,7 @@
 		9BE8B7A91B7300E9006B8C10 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8566CF921FCAC3610036149E /* MantleCoreData */,
 				9B14FEEA1D1AF0E7005A33A8 /* OXCValidation */,
 				9B14FEE31D1AF0CB005A33A8 /* OXCModel */,
 				9B14FF1F1D1AF0FE005A33A8 /* OXCMantle.h */,
@@ -229,6 +277,7 @@
 		9BE8B7CE1B7300E9006B8C10 /* ModelExample */ = {
 			isa = PBXGroup;
 			children = (
+				8566CFA41FCAC6EC0036149E /* CoreDataMantle */,
 				85566A141FCAA664006877EB /* CoreData */,
 				85566A131FCAA655006877EB /* JSON */,
 			);
@@ -435,17 +484,21 @@
 				9B14FF1D1D1AF0E7005A33A8 /* OXUnsignedLongTypeValicdator.m in Sources */,
 				9B14FF171D1AF0E7005A33A8 /* OXFloatTypeValidator.m in Sources */,
 				85566A461FCAAE4C006877EB /* Model.xcdatamodeld in Sources */,
+				8566CFA31FCAC4130036149E /* EXTRuntimeExtensions.m in Sources */,
 				9B14FF151D1AF0E7005A33A8 /* OXDoubleTypeValidator.m in Sources */,
 				9BE8B6B41B72FB14006B8C10 /* main.m in Sources */,
 				9B14FEE91D1AF0CB005A33A8 /* OXModel.m in Sources */,
 				9B14FF141D1AF0E7005A33A8 /* OXDictionaryTypeValidator.m in Sources */,
+				8566CFA11FCAC4130036149E /* MTLManagedObjectAdapter.m in Sources */,
 				9BE8B7E21B7300E9006B8C10 /* ModelExample.m in Sources */,
 				9BFEF0501D4A42FD00C2B489 /* OXDValidationFunctions.m in Sources */,
 				9B14FF131D1AF0E7005A33A8 /* OXDateTypeValidator.m in Sources */,
 				9B14FF101D1AF0E7005A33A8 /* OXBaseModelValidator.m in Sources */,
 				9B14FF1C1D1AF0E7005A33A8 /* OXUnsignedIntegerTypeValidator.m in Sources */,
+				8566CFA71FCAC71D0036149E /* OXCoreDataMantleVC.m in Sources */,
 				9B14FF161D1AF0E7005A33A8 /* OXEXTRuntimeExtensions.m in Sources */,
 				85566A171FCAA68F006877EB /* OXCoreDataViewController.m in Sources */,
+				8566CFA21FCAC4130036149E /* EXTScope.m in Sources */,
 				9B14FF0F1D1AF0E7005A33A8 /* OXArrayTypeValidator.m in Sources */,
 				9B14FF1A1D1AF0E7005A33A8 /* OXNumberTypeValidator.m in Sources */,
 				9B14FF191D1AF0E7005A33A8 /* OXLongTypeValidator.m in Sources */,
