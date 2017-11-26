@@ -11,6 +11,11 @@
 #import "OXDExamleContentThree.h"
 #import "OXDExampleContentTwo.h"
 @implementation OXDExampleModel
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    NSMutableDictionary *dict = [[super JSONKeyPathsByPropertyKey] mutableCopy];
+    [dict setValue:nil forKey:@"managedObj"];
+    return dict;
+}
 //该方法是必须实现的，返回此类对应的 Entity 类别。
 + (NSString *)managedObjectEntityName {
     return @"ExampleModel";

@@ -8,6 +8,8 @@
 
 #import "OXModel.h"
 #import "MTLManagedObjectAdapter.h"
+#import "ExampleModel+CoreDataProperties.h"
+#import "OXDExampleContentOne.h"
 typedef NS_ENUM(NSInteger,OXDExampleContentType) {
     OXDExampleContentTypeNone,
     OXDExampleContentTypeOne,
@@ -18,4 +20,5 @@ typedef NS_ENUM(NSInteger,OXDExampleContentType) {
 @property (nonatomic ,copy) NSString *qeustion;
 @property (nonatomic ,copy) NSNumber *type;
 @property (nonatomic ,strong) OXModel *content;
+@property (nonatomic ,strong) ExampleModel *managedObj;
 @end
