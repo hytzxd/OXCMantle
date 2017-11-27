@@ -16,9 +16,39 @@
         <attribute name="qeustion" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
+    <entity name="PetAbstractModel" representedClassName="PetAbstractModel" isAbstract="YES" syncable="YES" codeGenerationType="class">
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="super" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PetModel" inverseName="content" inverseEntity="PetModel" syncable="YES"/>
+    </entity>
+    <entity name="PetCatModel" representedClassName="PetCatModel" parentEntity="PetAbstractModel" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nickNames" optional="YES" attributeType="Transformable" valueTransformerName="" customClassName="OXDStringArrValueTransformer" syncable="YES"/>
+    </entity>
+    <entity name="PetDogModel" representedClassName="PetDogModel" parentEntity="PetAbstractModel" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="PetFishFood" representedClassName="PetFishFood" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="pet" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PetFishModel" inverseName="fishFoods" inverseEntity="PetFishModel" syncable="YES"/>
+    </entity>
+    <entity name="PetFishModel" representedClassName="PetFishModel" parentEntity="PetAbstractModel" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="fishFoods" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="PetFishFood" inverseName="pet" inverseEntity="PetFishFood" syncable="YES"/>
+    </entity>
+    <entity name="PetModel" representedClassName="PetModel" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="content" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PetAbstractModel" inverseName="super" inverseEntity="PetAbstractModel" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Department" positionX="-173" positionY="45" width="128" height="88"/>
-        <element name="Employee" positionX="97" positionY="30" width="128" height="103"/>
-        <element name="ExampleModel" positionX="-36" positionY="72" width="128" height="90"/>
+        <element name="Department" positionX="691" positionY="-232" width="128" height="88"/>
+        <element name="Employee" positionX="682" positionY="-94" width="128" height="103"/>
+        <element name="ExampleModel" positionX="628" positionY="135" width="128" height="90"/>
+        <element name="PetAbstractModel" positionX="108" positionY="63" width="128" height="73"/>
+        <element name="PetCatModel" positionX="-81" positionY="288" width="128" height="75"/>
+        <element name="PetDogModel" positionX="315" positionY="290" width="128" height="60"/>
+        <element name="PetFishModel" positionX="108" positionY="288" width="128" height="75"/>
+        <element name="PetModel" positionX="124" positionY="-108" width="128" height="90"/>
+        <element name="PetFishFood" positionX="126" positionY="-81" width="128" height="75"/>
     </elements>
 </model>

@@ -1,5 +1,5 @@
 //
-//  OXDPetModel.h
+//  OXDPetAbstractModel.h
 //  OXCMantle
 //
 //  Created by xudongzhang on 2017/11/27.
@@ -13,8 +13,6 @@ typedef NS_ENUM(NSInteger,OXDPetModelType) {
     OXDPetModelTypeCat,
     OXDPetModelTypeFish,
 };
-@interface OXDPetModel : OXModel
-@property (nonatomic ,copy) NSString *name;
-
-@property (nonatomic ,strong) OXModel *petModel;
+@interface OXDPetAbstractModel : OXModel
+@property (nonatomic ,copy) NSNumber *type;
 @end
