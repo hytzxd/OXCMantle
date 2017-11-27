@@ -7,7 +7,7 @@
 //
 
 #import "OXModel.h"
-
-@interface OXDPetFishFood : OXModel
-
+#import "MTLManagedObjectAdapter.h"
+@interface OXDPetFishFood : OXModel<MTLManagedObjectSerializing>
+@property (nonatomic ,copy) NSString *name;
 @end

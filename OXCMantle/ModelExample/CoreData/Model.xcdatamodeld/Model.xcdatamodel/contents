@@ -18,7 +18,7 @@
     </entity>
     <entity name="PetAbstractModel" representedClassName="PetAbstractModel" isAbstract="YES" syncable="YES" codeGenerationType="class">
         <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="super" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PetModel" inverseName="content" inverseEntity="PetModel" syncable="YES"/>
+        <relationship name="super" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PetModel" inverseName="petModel" inverseEntity="PetModel" syncable="YES"/>
     </entity>
     <entity name="PetCatModel" representedClassName="PetCatModel" parentEntity="PetAbstractModel" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -38,7 +38,7 @@
     <entity name="PetModel" representedClassName="PetModel" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="content" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PetAbstractModel" inverseName="super" inverseEntity="PetAbstractModel" syncable="YES"/>
+        <relationship name="petModel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PetAbstractModel" inverseName="super" inverseEntity="PetAbstractModel" syncable="YES"/>
     </entity>
     <elements>
         <element name="Department" positionX="691" positionY="-232" width="128" height="88"/>

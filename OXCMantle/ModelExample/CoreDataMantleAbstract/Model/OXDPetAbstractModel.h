@@ -7,12 +7,13 @@
 //
 
 #import "OXModel.h"
+#import "MTLManagedObjectAdapter.h"
 typedef NS_ENUM(NSInteger,OXDPetModelType) {
     OXDExampleContentTypeNone,
     OXDPetModelTypeDog,
     OXDPetModelTypeCat,
     OXDPetModelTypeFish,
 };
-@interface OXDPetAbstractModel : OXModel
+@interface OXDPetAbstractModel : OXModel<MTLManagedObjectSerializing>
 @property (nonatomic ,copy) NSNumber *type;
 @end

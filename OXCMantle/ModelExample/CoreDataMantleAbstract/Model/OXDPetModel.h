@@ -7,14 +7,12 @@
 //
 
 #import "OXModel.h"
-typedef NS_ENUM(NSInteger,OXDPetModelType) {
-    OXDExampleContentTypeNone,
-    OXDPetModelTypeDog,
-    OXDPetModelTypeCat,
-    OXDPetModelTypeFish,
-};
-@interface OXDPetModel : OXModel
-@property (nonatomic ,copy) NSString *name;
+#import "MTLManagedObjectAdapter.h"
+#import "PetModel+CoreDataProperties.h"
+#import "OXDPetAbstractModel.h"
 
-@property (nonatomic ,strong) OXModel *petModel;
+@interface OXDPetModel : OXModel<MTLManagedObjectSerializing>
+@property (nonatomic ,copy) NSString *name;
+@property (nonatomic ,strong) OXDPetAbstractModel *petModel;
+@property (nonatomic ,strong) PetModel *managedObj;
 @end

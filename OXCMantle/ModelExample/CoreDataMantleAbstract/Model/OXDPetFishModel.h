@@ -8,7 +8,7 @@
 
 #import "OXDPetAbstractModel.h"
 #import "OXDPetFishFood.h"
-@interface OXDPetFishModel : OXDPetAbstractModel
+@interface OXDPetFishModel : OXDPetAbstractModel<MTLManagedObjectSerializing>
 @property (nonatomic ,strong) NSArray <OXDPetFishFood *> *fishFoods;
 @property (nonatomic ,copy) NSString *name;
 @end
