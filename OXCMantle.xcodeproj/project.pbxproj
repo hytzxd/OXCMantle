@@ -19,6 +19,8 @@
 		8566CFB41FCAC9100036149E /* OXDExamleContentThree.m in Sources */ = {isa = PBXBuildFile; fileRef = 8566CFB31FCAC9100036149E /* OXDExamleContentThree.m */; };
 		8566CFB71FCAD2B20036149E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8566CFB51FCAD2B20036149E /* Model.xcdatamodeld */; };
 		8566CFD21FCAEF470036149E /* OXDExampleModelTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8566CFD11FCAEF470036149E /* OXDExampleModelTransformer.m */; };
+		85B920DE1FCBAF2900040FD1 /* OXDAbstractModelVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B920DD1FCBAF2900040FD1 /* OXDAbstractModelVC.m */; };
+		85B920E21FCBAF9A00040FD1 /* OXDPetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B920E11FCBAF9A00040FD1 /* OXDPetModel.m */; };
 		9B14FEE81D1AF0CB005A33A8 /* NSValueTransformer+MantleExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B14FEE51D1AF0CB005A33A8 /* NSValueTransformer+MantleExtention.m */; };
 		9B14FEE91D1AF0CB005A33A8 /* OXModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B14FEE71D1AF0CB005A33A8 /* OXModel.m */; };
 		9B14FF0E1D1AF0E7005A33A8 /* NSString+ValidationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B14FEEC1D1AF0E7005A33A8 /* NSString+ValidationUtils.m */; };
@@ -72,6 +74,10 @@
 		8566CFB61FCAD2B20036149E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		8566CFD01FCAEF470036149E /* OXDExampleModelTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OXDExampleModelTransformer.h; sourceTree = "<group>"; };
 		8566CFD11FCAEF470036149E /* OXDExampleModelTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OXDExampleModelTransformer.m; sourceTree = "<group>"; };
+		85B920DC1FCBAF2900040FD1 /* OXDAbstractModelVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OXDAbstractModelVC.h; sourceTree = "<group>"; };
+		85B920DD1FCBAF2900040FD1 /* OXDAbstractModelVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OXDAbstractModelVC.m; sourceTree = "<group>"; };
+		85B920E01FCBAF9A00040FD1 /* OXDPetModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OXDPetModel.h; sourceTree = "<group>"; };
+		85B920E11FCBAF9A00040FD1 /* OXDPetModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OXDPetModel.m; sourceTree = "<group>"; };
 		9B0344F21D10080300532921 /* ProtocolExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolExample.h; sourceTree = "<group>"; };
 		9B14FEE41D1AF0CB005A33A8 /* NSValueTransformer+MantleExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValueTransformer+MantleExtention.h"; sourceTree = "<group>"; };
 		9B14FEE51D1AF0CB005A33A8 /* NSValueTransformer+MantleExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValueTransformer+MantleExtention.m"; sourceTree = "<group>"; };
@@ -225,6 +231,25 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		85B920DB1FCBAEF600040FD1 /* CoreDataMantleAbstract */ = {
+			isa = PBXGroup;
+			children = (
+				85B920DF1FCBAF3F00040FD1 /* Model */,
+				85B920DC1FCBAF2900040FD1 /* OXDAbstractModelVC.h */,
+				85B920DD1FCBAF2900040FD1 /* OXDAbstractModelVC.m */,
+			);
+			path = CoreDataMantleAbstract;
+			sourceTree = "<group>";
+		};
+		85B920DF1FCBAF3F00040FD1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				85B920E01FCBAF9A00040FD1 /* OXDPetModel.h */,
+				85B920E11FCBAF9A00040FD1 /* OXDPetModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		99F0FFA48570BFF60845C9DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,6 +335,7 @@
 		9BE8B7CE1B7300E9006B8C10 /* ModelExample */ = {
 			isa = PBXGroup;
 			children = (
+				85B920DB1FCBAEF600040FD1 /* CoreDataMantleAbstract */,
 				8566CFA41FCAC6EC0036149E /* CoreDataMantle */,
 				85566A141FCAA664006877EB /* CoreData */,
 				85566A131FCAA655006877EB /* JSON */,
@@ -521,7 +547,9 @@
 				9B14FF171D1AF0E7005A33A8 /* OXFloatTypeValidator.m in Sources */,
 				8566CFA31FCAC4130036149E /* EXTRuntimeExtensions.m in Sources */,
 				9B14FF151D1AF0E7005A33A8 /* OXDoubleTypeValidator.m in Sources */,
+				85B920DE1FCBAF2900040FD1 /* OXDAbstractModelVC.m in Sources */,
 				9BE8B6B41B72FB14006B8C10 /* main.m in Sources */,
+				85B920E21FCBAF9A00040FD1 /* OXDPetModel.m in Sources */,
 				9B14FEE91D1AF0CB005A33A8 /* OXModel.m in Sources */,
 				9B14FF141D1AF0E7005A33A8 /* OXDictionaryTypeValidator.m in Sources */,
 				8566CFA11FCAC4130036149E /* MTLManagedObjectAdapter.m in Sources */,
