@@ -16,6 +16,10 @@
     [dict setValue:nil forKey:@"managedObj"];
     return dict;
 }
+
++ (NSValueTransformer *)contentJSONTransformer{
+    return [MTLJSONAdapter dictionaryTransformerWithModelClass:[OXDExampleContentOne class]];
+}
 //该方法是必须实现的，返回此类对应的 Entity 类别。
 + (NSString *)managedObjectEntityName {
     return @"ExampleModel";
@@ -24,10 +28,7 @@
 + (NSDictionary *)managedObjectKeysByPropertyKey {
     return [self JSONKeyPathsByPropertyKey];
 }
-+ (NSValueTransformer *)contentJSONTransformer{
-  
-    return [MTLJSONAdapter dictionaryTransformerWithModelClass:[OXDExampleContentOne class]];
-}
+
 //类似于 model 和 JSON 之间的转换，该方法用于 model 和 entity 之间的属性值转换。
 //+ (NSValueTransformer *)entityAttributeTransformerForKey:(NSString *)key {
 //    

@@ -8,6 +8,7 @@
 
 #import "OXCoreDataMantleVC.h"
 #import "OXDExampleModel.h"
+#import "ExampleModel+CoreDataClass.h"
 @interface OXCoreDataMantleVC ()
 
 @end
@@ -27,6 +28,7 @@
     NSError *error = nil;
     OXDExampleModel *example =  [MTLJSONAdapter modelOfClass:[OXDExampleModel class] fromJSONDictionary:dict error:&error];
     NSLog(@"%@ %@",example,error);
+    
     // 创建上下文对象，并发队列设置为主队列
     NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     // 创建托管对象模型，并使用Model.momd路径当做初始化参数
@@ -44,7 +46,7 @@
     context.persistentStoreCoordinator = coordinator;
     NSManagedObject *managedExample = [MTLManagedObjectAdapter managedObjectFromModel:example insertingIntoContext:context error:&error];
     example.managedObj = managedExample;
-    
+    ExampleModel *aObj = example;
     NSLog(@"%@",managedExample);
     if (context.hasChanges) {
         [context save:&error];

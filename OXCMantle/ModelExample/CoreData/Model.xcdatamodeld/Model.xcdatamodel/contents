@@ -47,8 +47,8 @@
         <element name="PetAbstractModel" positionX="108" positionY="63" width="128" height="73"/>
         <element name="PetCatModel" positionX="-81" positionY="288" width="128" height="75"/>
         <element name="PetDogModel" positionX="315" positionY="290" width="128" height="60"/>
+        <element name="PetFishFood" positionX="126" positionY="-81" width="128" height="75"/>
         <element name="PetFishModel" positionX="108" positionY="288" width="128" height="75"/>
         <element name="PetModel" positionX="124" positionY="-108" width="128" height="90"/>
-        <element name="PetFishFood" positionX="126" positionY="-81" width="128" height="75"/>
     </elements>
 </model>
