@@ -75,7 +75,6 @@
 		9B14FF081D1AF0E7005A33A8 /* OXUnsignedIntegerTypeValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OXUnsignedIntegerTypeValidator.m; sourceTree = "<group>"; };
 		9B14FF091D1AF0E7005A33A8 /* OXUnsignedLongTypeValicdator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OXUnsignedLongTypeValicdator.h; sourceTree = "<group>"; };
 		9B14FF0A1D1AF0E7005A33A8 /* OXUnsignedLongTypeValicdator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OXUnsignedLongTypeValicdator.m; sourceTree = "<group>"; };
-		9B14FF0B1D1AF0E7005A33A8 /* OXValidationFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OXValidationFunctions.h; sourceTree = "<group>"; };
 		9B14FF0C1D1AF0E7005A33A8 /* OXValidatorReflection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OXValidatorReflection.h; sourceTree = "<group>"; };
 		9B14FF0D1D1AF0E7005A33A8 /* OXValidatorReflection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OXValidatorReflection.m; sourceTree = "<group>"; };
 		9B14FF1F1D1AF0FE005A33A8 /* OXCMantle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OXCMantle.h; sourceTree = "<group>"; };
@@ -206,7 +205,6 @@
 		9BFEF04B1D4A41CB00C2B489 /* OXValidationFunctions */ = {
 			isa = PBXGroup;
 			children = (
-				9B14FF0B1D1AF0E7005A33A8 /* OXValidationFunctions.h */,
 				9BFEF04F1D4A42FD00C2B489 /* OXDValidationFunctions.h */,
 				9BFEF04E1D4A42FD00C2B489 /* OXDValidationFunctions.m */,
 			);

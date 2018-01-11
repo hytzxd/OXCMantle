@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "OXCMantle"
-  s.version      = "1.1.1"
+  s.version      = "1.1.2"
   s.summary      = "在Mantle的基础上夹生了类型验证，修复了一些bug"
   s.description  = <<-DESC
                    在Mantle的基础上夹生了类型验证，修复了一些bug
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author       = { "Alien" => "308325102@qq.com" }
   s.platform     = :ios ,"7.0"
-  s.source       = { :git => "https://github.com/hytzxd/OXCMantle.git", :branch => "master", :tag => '1.1.1' }
+  s.source       = { :git => "https://github.com/hytzxd/OXCMantle.git", :branch => "master", :tag => '1.1.2' }
   s.requires_arc = true
   s.source_files  =  'OXCMantle/Classes/*.{h}'
   s.dependency 'Mantle', '~> 2.0.7'
